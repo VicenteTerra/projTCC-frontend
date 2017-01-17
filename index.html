@@ -1,58 +1,54 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
-    <title></title>
-  </head>
-  <body ng-controller="myAppController as ctrl" >
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <title></title>
+</head>
 
-  <md-toolbar class="md-menu-toolbar" >
-     <div layout="row" style="height : 150px;">
-         <md-toolbar-filler layout layout-align="center center" style="width : 100px;">
-         </md-toolbar-filler>
-         <div>
-           <md-menu-bar>
-           </md-menu-bar>
-         </div>
-       </div>
-   </md-toolbar>
+<body ng-app="myApp" ng-strict-di>
+  <header>
+    <nav class="navbar navbar-default navbarStyle">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand"  href="#"></a>
+        </div>
 
-    <div class="col-xs-offset-3 col-xs-6 padded ">
-      <md-card class="page">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
 
-        <md-card-title>
-          <md-card-title-text class="text-center">
-            <span class="md-headline">Bem-vindo! </span>
-          </md-card-title-text>
-        </md-card-title>
+          </ul>
 
-        <form class="col-xs-12" >
-          <div class="form-group">
-            <md-input-container class="col-xs-12">
-              <label>Usuário</label>
-              <input type="text" ng-model="user.login">
-              {{user.login}}
-            </md-input-container>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false"><span class="caret "></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </header>
 
-            <md-input-container class="col-xs-12">
-              <label>Senha</label>
-              <input  type="password" ng-model="user.password">
-              {{user.password}}
-            </md-input-container>
-          </div>
-          <div class="form-group">
-           <a href="aluno.html"><md-button class="md-raised md-primary"> Login</md-button></a>
-           <a href="#"> Esqueci minha senha!</a>
-          </div>
-        </form>
-    </md-card>
-    </div>
+  <ui-view>
 
+  </ui-view>
 
-
-<!-- Angular Material requires Angular.js Libraries -->
+ <footer >
+ </footer>
+  <!-- Angular Material requires Angular.js Libraries -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
@@ -60,11 +56,21 @@
 
   <!-- Angular Material Library -->
   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <!--Libs-->
   <script src="js/jquery-3.1.1.min.js "></script>
   <script src="js/bootstrap.min.js "></script>
+  <script src="js/angular-ui-router.min.js "></script>
 
-  <script type="text/javascript" src="app.js">
 
-  </script>
-  </body>
+  <!-- Public Module -->
+  <script type="text/javascript" src="src/app.module.js"></script>
+
+  <!-- Public -->
+  <script type="text/javascript" src="src/public/public.module.js"></script>
+  <script type="text/javascript" src="src/public/public.routes.js"></script>
+  <script type="text/javascript" src="src/public/autentication/login.controller.js"></script>
+
+
+</body>
 </html>

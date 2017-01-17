@@ -1,0 +1,31 @@
+  <div class="col-xs-offset-3 col-xs-6 padded ">
+    <md-card class="page">
+
+      <md-card-title>
+        <md-card-title-text class="text-center">
+          <span class="md-headline">Bem-vindo! </span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <form class="col-xs-12" novalidate name="formLogin">
+        <div class="form-group">
+          <md-input-container class="col-xs-12">
+            <label>Usuário</label>
+            <input type="text" ng-model="user.login" name="login" required>
+          </md-input-container>
+
+          <md-input-container class="col-xs-12">
+            <label>Senha</label>
+            <input  type="password" ng-model="user.password" name="password" required>
+          </md-input-container>
+        </div>
+        <div class="form-group col-xs-6">
+          <md-button class="md-raised md-primary" ng-click="logar()"
+          ng-disabled="formLogin.$invalid" > Login</md-button>
+        </div>
+        <div class="form-group col-xs-6">
+          <a href="#">Esqueci minha senha!</a>
+        </div>
+      </form>
+    </md-card>
+  </div>
