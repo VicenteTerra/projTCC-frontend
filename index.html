@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="stylesheet/bootstrap.min.css">
+    <title></title>
+  </head>
+  <body ng-controller="myAppController as ctrl" >
+
+  <md-toolbar class="md-menu-toolbar" >
+     <div layout="row" style="height : 150px;">
+         <md-toolbar-filler layout layout-align="center center" style="width : 100px;">
+         </md-toolbar-filler>
+         <div>
+           <md-menu-bar>
+           </md-menu-bar>
+         </div>
+       </div>
+   </md-toolbar>
+
+    <div class="col-xs-offset-3 col-xs-6 padded ">
+      <md-card class="page">
+
+        <md-card-title>
+          <md-card-title-text class="text-center">
+            <span class="md-headline">Bem-vindo! </span>
+          </md-card-title-text>
+        </md-card-title>
+
+        <form class="col-xs-12" >
+          <div class="form-group">
+            <md-input-container class="col-xs-12">
+              <label>Usuário</label>
+              <input type="text" ng-model="user.login">
+              {{user.login}}
+            </md-input-container>
+
+            <md-input-container class="col-xs-12">
+              <label>Senha</label>
+              <input  type="password" ng-model="user.password">
+              {{user.password}}
+            </md-input-container>
+          </div>
+          <div class="form-group">
+           <a href="aluno.html"><md-button class="md-raised md-primary"> Login</md-button></a>
+           <a href="#"> Esqueci minha senha!</a>
+          </div>
+        </form>
+    </md-card>
+    </div>
+
+
+
+<!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+  <script src="js/jquery-3.1.1.min.js "></script>
+  <script src="js/bootstrap.min.js "></script>
+
+  <script type="text/javascript" src="app.js">
+
+  </script>
+  </body>
+</html>
