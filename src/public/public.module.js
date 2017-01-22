@@ -1,6 +1,6 @@
 (function() {
 "use strict";
 
-angular.module('public', ['ui.router', 'ngMaterial']);
+angular.module('public', ['ui.router', 'ngMaterial' , 'common' , 'ngCookies']);
 
 })();

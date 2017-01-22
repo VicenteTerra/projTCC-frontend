@@ -1,0 +1,16 @@
+<section layout="row">
+
+<sidebar-estabelecimento></sidebar-estabelecimento>
+
+<div class="col-xs-12">
+  <md-input-container class="col-xs-offset-3 col-xs-4">
+    <label>Consulte</label>
+    <input type="text" ng-model="estabelecimentoCtrl.consulta">
+  </md-input-container>
+  <md-button class="md-raised md-primary" ng-click="estabelecimentoCtrl.consultar()"> Verificar</md-button>
+  <div class="col-xs-12">
+    {{estabelecimentoCtrl.result}}
+  </div>
+</div>
+
+</section>

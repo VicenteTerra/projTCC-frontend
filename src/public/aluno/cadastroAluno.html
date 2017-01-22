@@ -1,0 +1,43 @@
+<div class="container">
+<md-card class="page col-xs-8 col-xs-offset-2">
+<h3>Cadastro de Usuário</h3>
+<div>
+ <form name="userForm">
+   <div layout-gt-sm="row">
+     <md-input-container class="md-block" flex-gt-sm>
+       <label>First name</label>
+       <input ng-model="cadastroAlunoCtrl.novoUsuario.firstName">
+     </md-input-container>
+
+     <md-input-container class="md-block" flex-gt-sm>
+       <label> Last Name </label>
+       <input ng-model="cadastroAlunoCtrl.novoUsuario.lastName" >
+       {{cadastroAlunoCtrl.novoUsuario.lastName}}
+     </md-input-container>
+   </div>
+
+   <md-input-container class="md-block">
+     <label>Address</label>
+     <input ng-model="cadastroAlunoCtrl.novoUsuario.address">
+   </md-input-container>
+
+   <div layout-gt-sm="row">
+     <md-input-container class="md-block" flex-gt-sm>
+       <label>City</label>
+       <input ng-model="cadastroAlunoCtrl.novoUsuario.city">
+     </md-input-container>
+     <md-input-container class="md-block" flex-gt-sm>
+       <label>Status</label>
+       <input ng-model="cadastroAlunoCtrl.novoUsuario.status">
+     </md-input-container>
+   </div>
+
+   <div layout-gt-sm="row" >
+     <md-button class="md-primary md-raised" ng-click="cadastroAlunoCtrl.salvarNovoUsuario()">Salvar</md-button>
+     <md-button class="md-warning md-raised">Cancelar</md-button>
+   </div>
+
+ </form>
+</div>
+</md-card>
+<div>

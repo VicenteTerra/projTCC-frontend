@@ -1,75 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-  <title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+<title></title>
 </head>
 
 <body ng-app="myApp" ng-strict-di>
-  <header>
-    <nav class="navbar navbar-default navbarStyle">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <a class="navbar-brand"  href="#"></a>
-        </div>
+<header>
+</header>
+<md-toolbar>
+    <div class="md-toolbar-tools baseColor">
+      <span flex></span>
+      <a ui-sref="cadastroAluno"><md-button ><i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>
+      </md-button></a>
+    </div>
+</md-toolbar>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
+<ui-view>
+</ui-view>
 
-          </ul>
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                 aria-expanded="false"><span class="caret "></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-  </header>
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
-  <ui-view>
-
-  </ui-view>
-
- <footer >
- </footer>
-  <!-- Angular Material requires Angular.js Libraries -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-
-  <!-- Angular Material Library -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-
-  <!--Libs-->
-  <script src="js/jquery-3.1.1.min.js "></script>
-  <script src="js/bootstrap.min.js "></script>
-  <script src="js/angular-ui-router.min.js "></script>
+<!--Libs-->
+<script src="js/jquery-3.1.1.min.js "></script>
+<script src="js/bootstrap.min.js "></script>
+<script src="js/angular-ui-router.min.js "></script>
+<script src="js/angular-cookies.min.js "></script>
 
 
-  <!-- Public Module -->
-  <script type="text/javascript" src="src/app.module.js"></script>
 
-  <!-- Public -->
-  <script type="text/javascript" src="src/public/public.module.js"></script>
-  <script type="text/javascript" src="src/public/public.routes.js"></script>
-  <script type="text/javascript" src="src/public/autentication/login.controller.js"></script>
+<!-- Public Module -->
+<script type="text/javascript" src="src/app.module.js"></script>
+
+<!-- Common -->
+<script type="text/javascript" src="src/common/common.module.js"></script>
+<script type="text/javascript" src="src/common/aluno.service.js"></script>
+<script type="text/javascript" src="src/common/auth.service.js"></script>
+
+<!-- Public -->
+<script type="text/javascript" src="src/public/public.module.js"></script>
+<script type="text/javascript" src="src/public/public.routes.js"></script>
+<script type="text/javascript" src="src/public/login/login.controller.js"></script>
+<script type="text/javascript" src="src/public/aluno/aluno.controller.js"></script>
+<script type="text/javascript" src="src/public/estabelecimento/estabelecimento.controller.js"></script>
+<script type="text/javascript" src="src/public/aluno/cadastroAluno.controller.js"></script>
+<script type="text/javascript" src="src/public/components/sidebar-aluno/sidebar.aluno.js"></script>
+<script type="text/javascript" src="src/public/components/sidebar-estabelecimento/sidebar.estabelecimento.js"></script>
+
 
 
 </body>
