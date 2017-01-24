@@ -6,6 +6,7 @@ angular.module('public')
 cadastroAlunoController.$inject = ['alunoService'];
 function cadastroAlunoController(alunoService) {
   var vm = this;
+
   vm.novoUsuario = {
     firstName: "",
     lastName: "",
@@ -16,7 +17,9 @@ function cadastroAlunoController(alunoService) {
   vm.salvarNovoUsuario = function () {
     console.log("new");
   //  console.log(AlunoService.getAll());
-    alunoService.criar(vm.novoUsuario);
+    alunoService.criar();
   }
+
+
 }
 })();

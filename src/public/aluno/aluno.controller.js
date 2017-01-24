@@ -10,5 +10,9 @@
     vm.list = alunoService.getAll();
 
 
+    vm.salvarNovoUsuario = function () {
+      console.log("new");
+      alunoService.criar();
+    }
   }
 })();

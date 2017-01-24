@@ -3,8 +3,8 @@
   angular.module('common')
   .service('alunoService' , alunoService);
 
-  alunoService.$inject = [];
-  function alunoService() {
+  alunoService.$inject = ['$http'];
+  function alunoService($http) {
   var service = this;
   service.list = [{
     firstName: 'adm',
@@ -22,9 +22,8 @@
 
   service.getAlunoByUserName = function(username , password){
 
-    for(var i = 0; i < service.alunoList.length; i++){
-      console.log(alunoList[i].username);
-      if((username === alunoList[i].username) && (password === alunoList[i].password)){
+    for(var i = 0; i < service.list.length; i++){
+      if((username === service.list[i].firstName) && (password === service.list[i].password)){
       return true;
       }
     }
@@ -41,14 +40,25 @@
   }
 
   service.getAll = function () {
-    return service.list;
+
+  return $http.get('http://localhost:9000/todosAlunos')
+              .then(function (response) {
+                return response.data;
+            });
+  //  return service.list;
   }
 
   service.criar = function (user) {
-    console.log(user.firstName);
-    service.list.push(user);
-    console.log(service.list);
-  }
+     console.log("service criar");
+    // service.list.push(user);
+    // console.log(service.list);
+    return $http.post('http://localhost:9000/novoAluno')
+    .then(function (response) {
+      console.log(response.data);
+      return response.data;
+    });
+  };
+
 
 }
 
