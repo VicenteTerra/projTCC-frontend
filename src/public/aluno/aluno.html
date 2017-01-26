@@ -1,32 +1,49 @@
 <section layout="row" style=" min-height : 500px">
 
-<sidebar-aluno ></sidebar-aluno>
+<div class="col-xs-3" style="padding: 0px">
+  <md-toolbar>
+    <md-card >
+     <md-card-title >
+       <md-card-title-text>
+         <span class="md-headline">Bem Vindo!</span>
+         <span class="md-subhead">Usuário logado</span>
+       </md-card-title-text>
+       <md-card-title-media>
+         <div class="md-media-sm card-media">
+           <img ng-src="img/teste.jpg" width="50px" height="50px" alt="">
+         </div>
+       </md-card-title-media>
+     </md-card-title>
+   </md-card>
+  </md-toolbar>
+  <md-content layout-padding class="text-center" >
+    <md-button  class="md-primary col-xs-11" aria-label="true" ng-click="alunoCtrl.loadAlunos()" >
+      <i class="fa fa-pencil-square-o" aria-hidden="true"> Lista de Usuários</i>
+    </md-button>
+  <a ui-sref="login"><md-button class="md-primary col-xs-11" aria-label="true">
+      <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
+    </md-button></a>
+  </md-content>
+</div>
 
-<md-content class="col-xs-12">
-  <md-list flex>
-    <md-subheader class="md-no-sticky">Lista de estabelecimentos</md-subheader>
-    <md-list-item class="md-4-line" ng-repeat="aluno in alunoCtrl.list track by $index" ng-click="null" >
-      <div class="md-list-item-text" >
-        {{aluno.firstName}}
-        {{aluno.lastName}}
-        {{aluno.address}}
-        {{aluno.city}}
-      </div>
-      <div class="col-xs-2">
-        <md-button class="md-secondary md-icon-button" >
-           <i class="fa fa-plus" aria-hidden="true"></i>
-        </md-button>
-        <md-button class="md-secondary md-icon-button" >
-          <md-button class="md-secondary md-icon-button" >
-          <i class="fa fa-times" aria-hidden="true"></i>
-          </md-button>
-      </div>
 
-      </md-button>
-    </md-list-item>
-  </md-list>
-</md-content>
+<div class="col-xs-9">
+   <md-list>
+     <div class="" ng-if="alunoCtrl.list.length > 0">
+       <h3>Usuários Cadastrados</h3>
+     </div>
 
-<button type="button" name="button" ng-click="alunoCtrl.salvarNovoUsuario()"> salvar</button>
+     <md-list-item class="md-3-line" ng-repeat="aluno in alunoCtrl.list track by $index">
+       <div class="md-list-item-text">
+         <h3>{{aluno.id}}</h3>
+         <h3>{{aluno.nome}}</h3>
+         <h4>{{aluno.cpf}}</h4>
+       </div>
+       <md-button class="md-secondary" ng-click="alunoCtrl.removeAluno(aluno.id)">Remover</md-button>
+       <md-divider ng-if="!$last"></md-divider>
+     </md-list-item>
+   </md-list>
+</div>
+
 
 </section>

@@ -11,17 +11,14 @@
 
 <body ng-app="myApp" ng-strict-di>
 <header>
+  <md-toolbar>
+  </md-toolbar>
 </header>
-<md-toolbar>
-    <div class="md-toolbar-tools baseColor">
-      <span flex></span>
-      <a ui-sref="cadastroAluno"><md-button ><i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>
-      </md-button></a>
-    </div>
-</md-toolbar>
 
 <ui-view>
 </ui-view>
+
+<footer></footer>
 
 <!-- Angular Material requires Angular.js Libraries -->
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
@@ -55,10 +52,6 @@
 <script type="text/javascript" src="src/public/aluno/aluno.controller.js"></script>
 <script type="text/javascript" src="src/public/estabelecimento/estabelecimento.controller.js"></script>
 <script type="text/javascript" src="src/public/aluno/cadastroAluno.controller.js"></script>
-<script type="text/javascript" src="src/public/components/sidebar-aluno/sidebar.aluno.js"></script>
-<script type="text/javascript" src="src/public/components/sidebar-estabelecimento/sidebar.estabelecimento.js"></script>
-
-
 
 </body>
 </html>

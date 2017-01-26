@@ -28,8 +28,6 @@
     vm.logoff = function () {
       $location.path('/login');
     }
-
-
   }
 
 

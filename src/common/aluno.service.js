@@ -40,25 +40,43 @@
   }
 
   service.getAll = function () {
-
-  return $http.get('http://localhost:9000/todosAlunos')
+    return $http.get('http://localhost:9000/aluno/all')
               .then(function (response) {
                 return response.data;
             });
-  //  return service.list;
   }
 
-  service.criar = function (user) {
-     console.log("service criar");
-    // service.list.push(user);
-    // console.log(service.list);
-    return $http.post('http://localhost:9000/novoAluno')
+  service.criarAluno = function (user) {
+
+    var data = {
+      nome: user.nome,
+      cpf: user.cpf,
+      email: user.email,
+      celular: user.celular,
+      instituicao: user.instituicao,
+      dataNascimento: user.dataNascimento,
+      senha: user.senha
+    };
+
+  return $http.post('http://localhost:9000/aluno/new', data)
     .then(function (response) {
-      console.log(response.data);
       return response.data;
     });
-  };
+  }
 
+  service.removeAluno = function (id){
+    return $http.get('http://localhost:9000/aluno/delete/' + id)
+      .then(function (response) {
+        return response.data;
+      });
+  }
+
+  service.getAlunoByCpf = function (cpf) {
+    return $http.get('http://localhost:9000/aluno/consulta/' + cpf)
+      .then(function (response) {
+        return response.data;
+      });
+  }
 
 }
 

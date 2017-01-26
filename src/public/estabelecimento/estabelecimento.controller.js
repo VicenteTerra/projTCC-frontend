@@ -6,14 +6,14 @@
   estabelecimentoController.$inject = ['alunoService' ];
   function estabelecimentoController(alunoService) {
     var vm = this;
-    vm.consulta = "";
-    vm.result = "";
+    vm.consultaCpf = "";
+    vm.usuarioConsulta = {};
 
 
     vm.consultar = function () {
-      vm.aluno = alunoService.getAlunoByName(vm.consulta);
-      console.log(vm.aluno.status);
-      vm.result = vm.aluno.status;
+    alunoService.getAlunoByCpf(vm.consultaCpf).then(function (response) {
+      vm.usuarioConsulta = response;
+    });
     }
 
 

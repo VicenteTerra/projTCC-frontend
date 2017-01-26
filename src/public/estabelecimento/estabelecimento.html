@@ -1,15 +1,64 @@
 <section layout="row">
 
-<sidebar-estabelecimento></sidebar-estabelecimento>
+<div class="col-sm-3" style="padding : 0px">
+  <md-toolbar>
+    <md-card >
+     <md-card-title >
+       <md-card-title-text>
+         <span class="md-headline">Bem Vindo!</span>
+         <span class="md-subhead">Estabelecimento logado</span>
+       </md-card-title-text>
+       <md-card-title-media>
+         <div class="md-media-sm card-media">
+           <img ng-src="img/teste.jpg" width="50px" height="50px" alt="">
+         </div>
+       </md-card-title-media>
+     </md-card-title>
+   </md-card>
+  </md-toolbar>
+  <md-content layout-padding class="text-center" >
+    <md-button  class="md-primary col-xs-11" aria-label="true" >
+      <i class="fa fa-pencil-square-o" aria-hidden="true">Verificar Matrícula</i>
+    </md-button>
+      <a ui-sref="login"><md-button class="md-primary col-xs-11" aria-label="true">
+    <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
+  </md-button></a>
+  </md-content>
+</div>
 
-<div class="col-xs-12">
+<div class="col-sm-9" style="padding: 10px">
   <md-input-container class="col-xs-offset-3 col-xs-4">
-    <label>Consulte</label>
-    <input type="text" ng-model="estabelecimentoCtrl.consulta">
+    <label>Consulte pelo CPF</label>
+    <input type="text" ng-model="estabelecimentoCtrl.consultaCpf"  >
   </md-input-container>
-  <md-button class="md-raised md-primary" ng-click="estabelecimentoCtrl.consultar()"> Verificar</md-button>
+  <md-button class="md-raised md-primary" ng-click="estabelecimentoCtrl.consultar()"
+             ng-disabled="estabelecimentoCtrl.consultaCpf == ''"> Verificar</md-button>
+
   <div class="col-xs-12">
-    {{estabelecimentoCtrl.result}}
+    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+         <md-card-title>
+           <md-card-title-text>
+             <span class="md-headline">{{estabelecimentoCtrl.usuarioConsulta.nome}}</span>
+             <span class="md-subhead">{{estabelecimentoCtrl.usuarioConsulta.instituicao}}</span>
+           </md-card-title-text>
+           <md-card-title-media>
+             <div class="md-media-lg card-media">
+                <img ng-src="img/teste.jpg" width="150px" height="150px" alt="">
+             </div>
+           </md-card-title-media>
+         </md-card-title>
+         <md-card-actions layout="row" layout-align="center">
+           <div ng-show="estabelecimentoCtrl.usuarioConsulta.situacaoMatricula == 1" class="alert alert-success">
+             <h4>Matriculado na {{estabelecimentoCtrl.usuarioConsulta.instituicao}}</h4>
+           </div>
+           <div ng-show="estabelecimentoCtrl.usuarioConsulta.situacaoMatricula == 0" class="alert alert-warning">
+             <h4>Matricula Trancada na {{estabelecimentoCtrl.usuarioConsulta.instituicao}} </h4>
+           </div>
+           <div ng-show="estabelecimentoCtrl.usuarioConsulta.situacaoMatricula == 2" class="alert alert-danger">
+             <h4>Nenhum vínculo com as instuições cadastradas </h4>
+           </div>
+         </md-card-actions>
+    </md-card>
   </div>
 </div>
 

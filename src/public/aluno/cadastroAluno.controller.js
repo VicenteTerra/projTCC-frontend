@@ -3,21 +3,16 @@
 angular.module('public')
 .controller('cadastroAlunoController',cadastroAlunoController);
 
-cadastroAlunoController.$inject = ['alunoService'];
-function cadastroAlunoController(alunoService) {
+cadastroAlunoController.$inject = ['alunoService', '$location'];
+function cadastroAlunoController(alunoService, $location) {
   var vm = this;
+  vm.novoUsuario = {};
+  vm.instituicaoList = [{nome : "UFLA"},{nome : "UNILAVRAS"},{nome : "FAGAMOM"}];
 
-  vm.novoUsuario = {
-    firstName: "",
-    lastName: "",
-    address: "",
-    city: "",
-    status: ""
-  }
   vm.salvarNovoUsuario = function () {
-    console.log("new");
-  //  console.log(AlunoService.getAll());
-    alunoService.criar();
+    alunoService.criarAluno(vm.novoUsuario).then(function () {
+        $location.path('/login');
+    });
   }
 
 

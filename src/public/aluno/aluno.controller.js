@@ -7,12 +7,24 @@
   function alunoController(alunoService) {
     var vm = this;
     vm.alunologado = "Admin";
-    vm.list = alunoService.getAll();
 
+    //console.log(alunoService.getAll());
 
-    vm.salvarNovoUsuario = function () {
-      console.log("new");
-      alunoService.criar();
+    
+
+    vm.loadAlunos = function () {
+     alunoService.getAll().then(function (response) {
+       vm.list = response;
+     });
     }
+
+    vm.removeAluno = function (index) {
+      alunoService.removeAluno(index).then(function () {
+        vm.loadAlunos();
+      });
+    }
+
+
+
   }
 })();
