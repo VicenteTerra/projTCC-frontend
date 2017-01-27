@@ -8,11 +8,13 @@
     var vm = this;
     vm.consultaCpf = "";
     vm.usuarioConsulta = {};
+    vm.showImg = false;
 
 
     vm.consultar = function () {
     alunoService.getAlunoByCpf(vm.consultaCpf).then(function (response) {
       vm.usuarioConsulta = response;
+      vm.showImg = true;
     });
     }
 
