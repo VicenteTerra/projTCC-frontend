@@ -1,28 +1,26 @@
 (function () {
   'use strict';
   angular.module('public')
-  .controller('loginController', loginController);
+    .controller('loginController', loginController);
 
   loginController.$inject = ['$location', 'authService'];
-  function loginController($location , authService ) {
+  function loginController($location, authService) {
     var vm = this;
-    vm.username = "";
+    vm.email = "";
     vm.password = "";
 
     vm.login = function () {
 
-      if(authService.autentica(vm.username , vm.password)){
+      authService.autentica(vm.email, vm.senha).then(function (response) {
+        console.log(response);
+        if (response.status == 0) {
         vm.msg = "";
-
-        if(vm.username === "adm")
         $location.path('/aluno');
-        if(vm.username === "estab")
-        $location.path('/estabelecimento');
-
       }
-      else{
+      else {
         vm.msg = "Usuário ou senha inválidos!"
       }
+      });   
     }
 
     vm.logoff = function () {

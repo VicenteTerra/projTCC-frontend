@@ -1,29 +1,23 @@
 (function () {
 
   angular.module('common')
-  .service('authService', authService);
+    .service('authService', authService);
 
-  authService.$inject = ['$http', '$cookies', '$rootScope', '$timeout' ,'alunoService' ];
-  function authService($http, $cookies, $rootScope, $timeout, alunoService ) {
+  authService.$inject = ['$http', '$cookies', '$rootScope', '$timeout', 'alunoService'];
+  function authService($http, $cookies, $rootScope, $timeout, alunoService) {
     var service = this;
 
 
-    service.autentica = function (username , password) {
-      /* Dummy authentication for testing, uses $timeout to simulate api call */
+    service.autentica = function (email, senha) {
+      var data = {
+        email: email,
+        senha: senha
+      };
 
-              if(alunoService.getAlunoByUserName(username , password)){
-                return true;
-              }
-              else{
-                return false;
-              }
-
-            /* Use this for real authentication
-             ----------------------------------------------*/
-            //$http.post('/api/authenticate', { username: username, password: password })
-            //    .success(function (response) {
-            //        callback(response);
-            //    });
+      return $http.post('http://localhost:9000/aluno/login', data)
+        .then(function (response) {
+          return response.data;
+        });    
     }
 
 
