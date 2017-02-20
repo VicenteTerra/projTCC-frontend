@@ -17,4 +17,5 @@ function cadastroAlunoController(alunoService, $location) {
 
 
 }
+
 })();

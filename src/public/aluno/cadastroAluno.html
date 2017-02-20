@@ -1,24 +1,21 @@
-
 <md-card class="page col-sm-8 col-sm-offset-2 col-xs-12">
-<div class="text-center">
-  <h3>Cadastro de Usuário</h3>
-</div>
- <form name="userForm" style="padding: 5px">
-   <div layout-gt-sm="row">
-     <md-input-container class="md-block" flex-gt-sm>
-       <label>Nome completo</label>
-       <input ng-model="cadastroAlunoCtrl.novoUsuario.nome" required>
-     </md-input-container>
+  <div class="text-center">
+    <h3>Cadastro de Usuário</h3>
+  </div>
+  <form name="userForm" style="padding: 5px">
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nome completo</label>
+        <input ng-model="cadastroAlunoCtrl.novoUsuario.nome" required>
+      </md-input-container>
 
-     <md-input-container class="md-block" flex-gt-sm>
-       <label>Data de nascimento</label>
-       <md-datepicker  aria-label="true" ng-model="cadastroAlunoCtrl.novoUsuario.dataNascimento"
-        md-open-on-focus required></md-datepicker>
-     </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Data de nascimento</label>
+        <md-datepicker aria-label="true" ng-model="cadastroAlunoCtrl.novoUsuario.dataNascimento" md-open-on-focus required></md-datepicker>
+      </md-input-container>
+    </div>
 
-   </div>
-
-   <div layout-gt-sm="row">
+    <div layout-gt-sm="row">
       <md-input-container class="md-block" flex-gt-sm>
         <label>E-mail</label>
         <input ng-model="cadastroAlunoCtrl.novoUsuario.email" required>
@@ -26,50 +23,49 @@
 
       <md-input-container class="md-block" flex-gt-sm>
         <label>Celular</label>
-        <input name="cel" ng-model="cadastroAlunoCtrl.novoUsuario.celular"
-               ng-pattern="/^[(][0-9]{2}[)] [0-9]{5}-[0-9]{4}$/">
-          <div ng-messages="userForm.cel.$error" >
-            <div ng-message="pattern">(##) #####-#### - Por favor insira um número válido.</div>
-          </div>
+        <input name="cel" ng-model="cadastroAlunoCtrl.novoUsuario.celular" ui-br-phone-number>
+        <div ng-messages="userForm.cel.$error">
+          <div ng-message="pattern">(##) #####-#### - Por favor insira um número válido.</div>
+        </div>
       </md-input-container>
-   </div>
+    </div>
 
-   <div layout-gt-sm="row">
-     <md-input-container class="md-block" flex-gt-sm>
-       <label>CPF</label>
-       <input ng-model="cadastroAlunoCtrl.novoUsuario.cpf" required>
-     </md-input-container>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>CPF</label>
+        <input name="cpf" ng-model="cadastroAlunoCtrl.novoUsuario.cpf" required ui-br-cpf-mask>
+      </md-input-container>
 
-     <md-input-container class="md-block" flex-gt-sm>
-       <label>Instituição de ensino</label>
-       <md-select ng-model="cadastroAlunoCtrl.novoUsuario.instituicao" required>
-             <md-option><em>None</em></md-option>
-             <md-option ng-repeat="inst in cadastroAlunoCtrl.instituicaoList"
-              ng-value="inst.nome">
-               {{inst.nome}}
-             </md-option>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Instituição de ensino</label>
+        <md-select ng-model="cadastroAlunoCtrl.novoUsuario.instituicao" required>
+          <md-option><em>None</em></md-option>
+          <md-option ng-repeat="inst in cadastroAlunoCtrl.instituicaoList" ng-value="inst.nome">
+            {{inst.nome}}
+          </md-option>
         </md-select>
-     </md-input-container>
-   </div>
+      </md-input-container>
+    </div>
 
-   <div layout-gt-sm="row">
-     <md-input-container class="md-block" flex-gt-sm>
-       <label>Senha</label>
-       <input ng-model="cadastroAlunoCtrl.novoUsuario.senha" type="password" required>
-     </md-input-container>
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Senha</label>
+        <input ng-model="cadastroAlunoCtrl.novoUsuario.senha" type="password" required>
+      </md-input-container>
 
-     <md-input-container class="md-block" flex-gt-sm>
-       <label>Repita sua senha</label>
-       <input ng-model="cadastroAlunoCtrl.novoUsuario.confirmaSenha" type="password"required>
-     </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Repita sua senha</label>
+        <input ng-model="cadastroAlunoCtrl.novoUsuario.confirmaSenha" type="password" required>
+      </md-input-container>
 
-   </div>
+    </div>
 
-   <div layout-gt-sm="row" >
-     <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid"
-     ng-click="cadastroAlunoCtrl.salvarNovoUsuario()">Salvar</md-button>
-     <a ui-sref="login"><md-button class="md-warning md-raised">Cancelar</md-button></a>
-   </div>
+    <div layout-gt-sm="row">
+      <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroAlunoCtrl.salvarNovoUsuario()">Salvar</md-button>
+      <a ui-sref="login">
+        <md-button class="md-warning md-raised">Cancelar</md-button>
+      </a>
+    </div>
 
- </form>
+  </form>
 </md-card>

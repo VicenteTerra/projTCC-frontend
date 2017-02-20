@@ -1,5 +1,5 @@
 (function() {
 "use strict";
 
-angular.module('public', ['ui.router', 'ngMaterial' , 'common' , 'ngCookies']);
+angular.module('public', ['ui.router', 'ngMaterial' , 'common' , 'ngCookies', 'ui.utils.masks']);
 })();
