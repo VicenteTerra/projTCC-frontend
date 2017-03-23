@@ -6,8 +6,7 @@
   authService.$inject = ['$http', '$cookies', '$rootScope', '$timeout', 'alunoService'];
   function authService($http, $cookies, $rootScope, $timeout, alunoService) {
     var service = this;
-
-
+    
     service.autentica = function (email, senha) {
       var data = {
         email: email,
@@ -16,10 +15,11 @@
 
       return $http.post('http://localhost:9000/aluno/login', data)
         .then(function (response) {
+          service.usuarioLogado = response.data.alunoLogado;
+          console.log(service.usuarioLogado)
           return response.data;
-        });    
+        });
     }
-
 
   }
 

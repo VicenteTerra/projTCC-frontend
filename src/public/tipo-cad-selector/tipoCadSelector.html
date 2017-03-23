@@ -1,0 +1,16 @@
+<div layout="column" layout-align="center center" style="padding:60px" ng-cloak>
+    <h3> Cadastrar </h3>
+    <div layout="column" layout-align="center center">
+        <form name="cadTypeForm">
+        <md-select placeholder="Tipo de usuário" ng-model="cadastroAlunoCtrl.cadSelected" 
+            style="min-width: 200px;" required>
+            <md-option ng-repeat="tipo in cadastroAlunoCtrl.cadSelector" ng-value="tipo.nome">
+                {{tipo.nome}}
+            </md-option>
+        </md-select>
+        <md-button class="md-raised md-primary" ng-click="cadastroAlunoCtrl.selectTypeCad()"
+        ng-disabled="cadTypeForm.$invalid"  >Continuar</md-button>
+        <md-button class="md-warning md-raised" ui-sref="login">Voltar</md-button>
+        </form>
+    </div>
+</div>
