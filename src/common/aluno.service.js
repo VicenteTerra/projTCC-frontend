@@ -5,39 +5,7 @@
 
   alunoService.$inject = ['$http'];
   function alunoService($http) {
-  var service = this;
-  service.list = [{
-    firstName: 'adm',
-    lastName: 'adm',
-    password: 'adm',
-    city: 'adm',
-    status: 'matriculado'
-  },{
-    firstName: 'estab',
-    lastName: 'estab',
-    password: 'estab',
-    city: 'estab',
-    status: 'trancado'
-  }];
-
-  service.getAlunoByUserName = function(username , password){
-
-    for(var i = 0; i < service.list.length; i++){
-      if((username === service.list[i].firstName) && (password === service.list[i].password)){
-      return true;
-      }
-    }
-
-  }
-
-  service.getAlunoByName = function (name) {
-    for(var i = 0 ; i < service.list.length; i++){
-      if(service.list[i].firstName === name){
-        console.log("achei" + service.list[i].firstName);
-        return service.list[i];
-      }
-    }
-  }
+  var service = this
 
   service.getAll = function () {
     return $http.get('http://localhost:9000/aluno/all')

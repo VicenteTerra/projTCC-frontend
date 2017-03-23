@@ -1,5 +1,7 @@
 (function() {
-"use strict";
+    "use strict";
 
-angular.module('public', ['ui.router', 'ngMaterial' , 'common' , 'ngCookies', 'ui.utils.masks']);
+    angular.module('public', ['ui.router', 'ngMaterial', 'common',
+        'ngCookies', 'ui.utils.masks', 'angularNotify', 'lr.upload'
+    ]);
 })();

@@ -3,14 +3,17 @@
   angular.module('public')
   .controller('alunoController' , alunoController);
 
-  alunoController.$inject = ['alunoService'];
-  function alunoController(alunoService) {
+  alunoController.$inject = ['alunoService' , 'authService' , '$scope' , '$mdSidenav'];
+  function alunoController(alunoService , authService , $scope , $mdSidenav) {
     var vm = this;
-    vm.alunologado = "Admin";
+    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleRight = buildToggler('right');
 
-    //console.log(alunoService.getAll());
-
-    
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
 
     vm.loadAlunos = function () {
      alunoService.getAll().then(function (response) {

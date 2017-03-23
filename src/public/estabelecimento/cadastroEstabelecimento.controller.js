@@ -1,24 +1,14 @@
 (function() {
     'use strict';
     angular.module('public')
-        .controller('cadastroAlunoController', cadastroAlunoController);
+        .controller('cadastroEstabelecimentoController', cadastroEstabelecimentoController);
 
-    cadastroAlunoController.$inject = ['alunoService', '$location', '$scope', '$state', '$mdDialog'];
+    cadastroEstabelecimentoController.$inject = ['estabelecimentoService', '$location', '$scope', '$mdDialog'];
 
-    function cadastroAlunoController(alunoService, $location, $scope, $state, $mdDialog) {
+    function cadastroEstabelecimentoController(estabelecimentoService, $location, $scope, $mdDialog) {
         var vm = this;
         vm.novoUsuario = {};
-        vm.instituicaoList = [{ nome: "UFLA" }, { nome: "UNILAVRAS" }, { nome: "FAGAMOM" }];
-        vm.cadSelector = [{ nome: "Estabelecimento" }, { nome: "Usuário Comum" }];
-        vm.cadSelected = {};
-
-        vm.selectTypeCad = function() {
-            if (vm.cadSelected === "Estabelecimento") {
-                $state.go("cadastroEstabelecimento");
-            } else {
-                $state.go("cadastroAluno");
-            }
-        }
+        vm.tipoEstabelecimentoList = [{ nome: "Cinema/Teatro" }, { nome: "Shows/Eventos" }, { nome: "Transporte" }];
 
         vm.salvarNovoUsuario = function() {
             if (vm.novoUsuario.senha != vm.novoUsuario.confirmaSenha) {
@@ -30,7 +20,7 @@
                 };
                 $scope.$emit('notify', notify);
             } else {
-                alunoService.criarAluno(vm.novoUsuario).then(function(response) {
+                estabelecimentoService.criarEstabelecimento(vm.novoUsuario).then(function(response) {
                     if (response.status === 0) {
                         var notify = {
                             type: 'success',
@@ -52,11 +42,10 @@
                 });
             }
         }
-
         vm.showModalTermos = function(ev) {
             $mdDialog.show({
-                    controller: cadastroAlunoController,
-                    templateUrl: 'src/public/aluno/termoAceiteAluno.html',
+                    controller: cadastroEstabelecimentoController,
+                    templateUrl: 'src/public/estabelecimento/termosAceite.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,
                     clickOutsideToClose: true,
@@ -69,6 +58,6 @@
                 });
         };
 
-    }
 
+    }
 })();

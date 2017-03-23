@@ -1,0 +1,90 @@
+<md-card class="page col-sm-10 col-sm-offset-1 col-xs-12">
+    <div class="text-center">
+        <h3>Cadastro de Estabelecimentos</h3>
+    </div>
+
+    <form name="userForm" style="padding: 5px">
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Nome do Estabelecimento</label>
+                <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.nome" required>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Endereço</label>
+                <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.endereco" required>
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Nome do reponsável pelo estabelecimento</label>
+                <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.nomeResponsavel" required>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>CPF do reponsável</label>
+                <input name="cel" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.cpfResponsavel" ui-br-cpf-mask required>
+            </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>E-mail</label>
+                <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.email" required>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Celular / Telefone</label>
+                <input name="cel" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.telefone" ui-br-phone-number required>
+            </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>CNPJ</label>
+                <input name="cpf" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.cnpj" required ui-br-cnpj-mask>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Tipo de Estabelecimento</label>
+                <md-select ng-model="cadastroEstabelecimentoCtrl.novoUsuario.tipoEstabelecimento">
+                    <md-option><em>None</em></md-option>
+                    <md-option ng-repeat="tipos in cadastroEstabelecimentoCtrl.tipoEstabelecimentoList" ng-value="tipos.nome">
+                        {{tipos.nome}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Senha</label>
+                <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.senha" type="password" required>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Repita sua senha</label>
+                <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.confirmaSenha" type="password" required>
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <div class="col-xs-6">
+                <md-checkbox ng-model="cadastroEstabelecimentoCtrl.termoAceite" aria-label="termoAceite" required>
+                </md-checkbox>
+                Aceito os <a href="" ng-click="cadastroEstabelecimentoCtrl.showModalTermos($event)">termos e condições</a> de uso do sistema.*
+            </div>
+            <div class="col-xs-6 " style="float: right">
+                Envie a documentação exigida. Lista se encontra <a>aqui</a>.
+                <div class="md-media-lg card-media" upload-button url="/upload" on-success="onSuccess(response)">
+
+                </div>
+            </div>
+        </div>
+
+
+        <div layout-gt-sm="row">
+            <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroEstabelecimentoCtrl.salvarNovoUsuario()">Salvar</md-button>
+            <md-button class="md-warning md-raised" ui-sref="cadastroSelector">Voltar</md-button>
+        </div>
+
+    </form>
+</md-card>
