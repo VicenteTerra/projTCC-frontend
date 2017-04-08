@@ -13,7 +13,7 @@
 
       authService.autentica(vm.email, vm.senha).then(function (response) {
 
-        if (response.status == 0) {
+        if (response.status === 0) {
           if (response.tipoUsuario === 1) {
             $location.path('/aluno');
           }
