@@ -70,14 +70,17 @@
             <div class="col-xs-6">
                 <md-checkbox ng-model="cadastroEstabelecimentoCtrl.termoAceite" aria-label="termoAceite" required>
                 </md-checkbox>
-                Aceito os <a href="" ng-click="cadastroEstabelecimentoCtrl.showModalTermos($event)">termos e condições</a> de uso do sistema.*
+                Aceito os <a href="" ng-click="cadastroEstabelecimentoCtrl.showModalTermos($event)">termos e condições</a> de 
+                uso do sistema.*
             </div>
-            <div class="col-xs-6 " style="float: right">
-                Envie a documentação exigida. Lista se encontra <a>aqui</a>.
-                <div class="md-media-lg card-media" upload-button url="/upload" on-success="onSuccess(response)">
 
-                </div>
-            </div>
+
+            <input type="file" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.files" base-sixty-four-input maxsize="1000000" multiple>
+            <table>
+                <tr ng-repeat="file in cadastroEstabelecimentoCtrl.novoUsuario.files">
+                    <td>{{file.filename}}</td>
+                </tr>
+            </table>
         </div>
 
 

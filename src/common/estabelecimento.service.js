@@ -1,7 +1,7 @@
 (function() {
 
     angular.module('common')
-        .service('estabelecimentoService', estabelecimentoService);
+    .service('estabelecimentoService', estabelecimentoService);
 
     estabelecimentoService.$inject = ['$http'];
 
@@ -18,13 +18,14 @@
                 senha: estabelecimento.senha,
                 endereco: estabelecimento.endereco,
                 nomeResponsavel: estabelecimento.nomeResponsavel,
-                cpfResponsavel: estabelecimento.cpfResponsavel
+                cpfResponsavel: estabelecimento.cpfResponsavel,
+                files : estabelecimento.files
             }
-            console.log(data);
             return $http.post('http://localhost:9000/estabelecimento/new', data)
-                .then(function(response) {
-                    return response.data;
-                });
+            .then(function(response) {
+                return response.data;
+            });
         }
+
     }
 })();

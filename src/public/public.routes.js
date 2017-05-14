@@ -53,7 +53,7 @@
                 controller: 'cadastroAlunoController',
                 controllerAs: 'cadastroAlunoCtrl'
             })
-
+           
         ;
     }
 })();
