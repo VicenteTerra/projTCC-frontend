@@ -1,3 +1,4 @@
+
 .navbarStyle{
   height: 90px;
   background-color: lightgray !important;
@@ -26,4 +27,7 @@
 .nv{
   border-radius: 2px;
   color: red;
+}
+.upload-files{
+  
 }

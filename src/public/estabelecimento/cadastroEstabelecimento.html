@@ -47,7 +47,6 @@
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Tipo de Estabelecimento</label>
                 <md-select ng-model="cadastroEstabelecimentoCtrl.novoUsuario.tipoEstabelecimento">
-                    <md-option><em>None</em></md-option>
                     <md-option ng-repeat="tipos in cadastroEstabelecimentoCtrl.tipoEstabelecimentoList" ng-value="tipos.nome">
                         {{tipos.nome}}
                     </md-option>
@@ -67,27 +66,41 @@
             </md-input-container>
         </div>
         <div layout-gt-sm="row">
-            <div class="col-xs-6">
+            <div class="col-xs-6" style="padding: 10px;">
                 <md-checkbox ng-model="cadastroEstabelecimentoCtrl.termoAceite" aria-label="termoAceite" required>
                 </md-checkbox>
                 Aceito os <a href="" ng-click="cadastroEstabelecimentoCtrl.showModalTermos($event)">termos e condições</a> de 
                 uso do sistema.*
             </div>
 
+            <div class="col-xs-3">
+             <label class="md-button md-primary md-raised">
+             Upload de Documentos
+                <i class="material-icons">file_upload</i>
+                <input style="display: none;" type="file" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.files" base-sixty-four-input maxsize="1000000" multiple accept="application/pdf"/>
+            </label> 
+            
+              </div>  
+            
+            <div class="col-xs-3 upload-files">
+                <table>
+                    <tr ng-repeat="file in cadastroEstabelecimentoCtrl.novoUsuario.files">
+                        <td>{{file.filename}}</td>
+                    </tr>
+                </table>
+            </div>
+      
 
-            <input type="file" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.files" base-sixty-four-input maxsize="1000000" multiple>
-            <table>
-                <tr ng-repeat="file in cadastroEstabelecimentoCtrl.novoUsuario.files">
-                    <td>{{file.filename}}</td>
-                </tr>
-            </table>
-        </div>
 
 
-        <div layout-gt-sm="row">
-            <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroEstabelecimentoCtrl.salvarNovoUsuario()">Salvar</md-button>
-            <md-button class="md-warning md-raised" ui-sref="cadastroSelector">Voltar</md-button>
-        </div>
+    </div>
+</div>
 
-    </form>
+
+<div layout-gt-sm="row">
+    <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroEstabelecimentoCtrl.salvarNovoUsuario()">Salvar</md-button>
+    <md-button class="md-warning md-raised" ui-sref="cadastroSelector">Voltar</md-button>
+</div>
+
+</form>
 </md-card>
