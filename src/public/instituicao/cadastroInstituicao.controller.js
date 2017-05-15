@@ -1,42 +1,17 @@
 (function() {
     'use strict';
     angular.module('public')
-    .controller('cadastroAlunoController', cadastroAlunoController);
+    .controller('cadastroInstituicaoController', cadastroInstituicaoController);
 
-    cadastroAlunoController.$inject = ['alunoService','instituicaoService', '$location', '$scope', '$state', '$mdDialog'];
+    cadastroInstituicaoController.$inject = ['instituicaoService', '$location', '$scope', '$mdDialog'];
 
-    function cadastroAlunoController(alunoService, instituicaoService, $location, $scope, $state, $mdDialog) {
+    function cadastroInstituicaoController(instituicaoService, $location, $scope, $mdDialog) {
         var vm = this;
         vm.novoUsuario = {};
-        vm.instituicaoList = {};
-        vm.instituicaoSelected = {};
 
-        instituicaoService.getInstituicoes().then(function(response) {
-            if (response.status === 0) {
-                vm.instituicaoList = response.listaInstituicoes;
-            } else {
-
-            }
-        });
-
-        vm.cadSelector = [{ nome: "Estabelecimento" }, { nome: "Aluno"} , {nome : "Instituição de Ensino"}];
-        vm.cadSelected = {};
-
-        vm.selectTypeCad = function() {
-            if (vm.cadSelected === "Estabelecimento") {
-                $state.go("cadastroEstabelecimento");
-            } 
-            if(vm.cadSelected === "Aluno"){
-                $state.go("cadastroAluno");
-            }
-            if(vm.cadSelected === "Instituição de Ensino"){
-                $state.go("cadastroInstituicao");
-            }
-
-        }
 
         vm.salvarNovoUsuario = function() {
-            console.log(vm.novoUsuario);
+
             if (vm.novoUsuario.senha != vm.novoUsuario.confirmaSenha) {
                 var notify = {
                     type: 'error',
@@ -46,7 +21,7 @@
                 };
                 $scope.$emit('notify', notify);
             } else {
-                alunoService.criarAluno(vm.novoUsuario).then(function(response) {
+                instituicaoService.criarInstituicao(vm.novoUsuario).then(function(response) {
                     if (response.status === 0) {
                         var notify = {
                             type: 'success',
@@ -67,12 +42,12 @@
                     }
                 });
             }
-        }
+        };
 
         vm.showModalTermos = function(ev) {
             $mdDialog.show({
-                controller: cadastroAlunoController,
-                templateUrl: 'src/public/aluno/termoAceiteAluno.html',
+                controller: cadastroInstituicaoController,
+                templateUrl: 'src/public/instituicao/termosAceite.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
@@ -85,6 +60,6 @@
             });
         };
 
-    }
 
+    }
 })();

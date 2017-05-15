@@ -47,6 +47,19 @@
                 controller: 'cadastroEstabelecimentoController',
                 controllerAs: 'cadastroEstabelecimentoCtrl'
             })
+            .state('instituicao', {
+                url: '/instituicao',
+                templateUrl: 'src/public/instituicao/instituicao.html',
+                controller: 'instituicaoController',
+                controllerAs: 'instituicaoCtrl'
+
+            })
+            .state('cadastroInstituicao', {
+                url: '/cadastroInstituicao',
+                templateUrl: 'src/public/instituicao/cadastroInstituicao.html',
+                controller: 'cadastroInstituicaoController',
+                controllerAs: 'cadastroInstituicaoCtrl'
+            })
             .state('cadastroSelector', {
                 url: '/cadastro',
                 templateUrl: 'src/public/tipo-cad-selector/tipoCadSelector.html',

@@ -10,14 +10,11 @@
 
     service.autentica = function(email, senha) {
       var data = {
-        email: email,
-        senha: senha
+        login: email
       };
 
-      return $http.post('http://localhost:9000/aluno/login', data)
+      return $http.post('http://localhost:9000/usuario/getTipo', data)
         .then(function(response) {
-          service.usuarioLogado = response.data.alunoLogado;
-          console.log(service.usuarioLogado)
           return response.data;
         });
     }
