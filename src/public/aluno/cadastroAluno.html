@@ -37,8 +37,8 @@
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Instituição de ensino</label>
                 <md-select ng-model="cadastroAlunoCtrl.novoUsuario.instituicao" required>
-                    <md-option><em>None</em></md-option>
-                    <md-option ng-repeat="inst in cadastroAlunoCtrl.instituicaoList" ng-value="inst.nome">
+                    <md-option ng-if="cadastroAlunoCtrl.instituicaoList.size() > 0"><em>Nenhuma Instituição Cadastrada</em></md-option>
+                    <md-option ng-repeat="inst in cadastroAlunoCtrl.instituicaoList track by id" ng-value="inst.id">
                         {{inst.nome}}
                     </md-option>
                 </md-select>

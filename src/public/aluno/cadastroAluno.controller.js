@@ -1,26 +1,42 @@
 (function() {
     'use strict';
     angular.module('public')
-        .controller('cadastroAlunoController', cadastroAlunoController);
+    .controller('cadastroAlunoController', cadastroAlunoController);
 
-    cadastroAlunoController.$inject = ['alunoService', '$location', '$scope', '$state', '$mdDialog'];
+    cadastroAlunoController.$inject = ['alunoService','instituicaoService', '$location', '$scope', '$state', '$mdDialog'];
 
-    function cadastroAlunoController(alunoService, $location, $scope, $state, $mdDialog) {
+    function cadastroAlunoController(alunoService, instituicaoService, $location, $scope, $state, $mdDialog) {
         var vm = this;
         vm.novoUsuario = {};
-        vm.instituicaoList = [{ nome: "UFLA" }, { nome: "UNILAVRAS" }, { nome: "FAGAMOM" }];
-        vm.cadSelector = [{ nome: "Estabelecimento" }, { nome: "Usuário Comum" }];
+        vm.instituicaoList = {};
+        vm.instituicaoSelected = {};
+
+        instituicaoService.getInstituicoes().then(function(response) {
+            if (response.status === 0) {
+                vm.instituicaoList = response.listaInstituicoes;
+            } else {
+
+            }
+        });
+
+        vm.cadSelector = [{ nome: "Estabelecimento" }, { nome: "Aluno"} , {nome : "Instituição de Ensino"}];
         vm.cadSelected = {};
 
         vm.selectTypeCad = function() {
             if (vm.cadSelected === "Estabelecimento") {
                 $state.go("cadastroEstabelecimento");
-            } else {
+            } 
+            if(vm.cadSelected === "Aluno"){
                 $state.go("cadastroAluno");
             }
+            if(vm.cadSelected === "Instituição de Ensino"){
+                $state.go("cadastroInstituicao");
+            }
+
         }
 
         vm.salvarNovoUsuario = function() {
+            console.log(vm.novoUsuario);
             if (vm.novoUsuario.senha != vm.novoUsuario.confirmaSenha) {
                 var notify = {
                     type: 'error',
@@ -55,18 +71,18 @@
 
         vm.showModalTermos = function(ev) {
             $mdDialog.show({
-                    controller: cadastroAlunoController,
-                    templateUrl: 'src/public/aluno/termoAceiteAluno.html',
-                    parent: angular.element(document.body),
-                    targetEvent: ev,
-                    clickOutsideToClose: true,
+                controller: cadastroAlunoController,
+                templateUrl: 'src/public/aluno/termoAceiteAluno.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
                     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
                 })
-                .then(function(answer) {
-                    $scope.status = 'You said the information was "' + answer + '".';
-                }, function() {
-                    $scope.status = 'You cancelled the dialog.';
-                });
+            .then(function(answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function() {
+                $scope.status = 'You cancelled the dialog.';
+            });
         };
 
     }

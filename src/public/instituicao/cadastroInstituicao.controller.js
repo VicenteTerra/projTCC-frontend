@@ -1,14 +1,13 @@
 (function() {
     'use strict';
     angular.module('public')
-    .controller('cadastroEstabelecimentoController', cadastroEstabelecimentoController);
+    .controller('cadastroInstituicaoController', cadastroInstituicaoController);
 
-    cadastroEstabelecimentoController.$inject = ['estabelecimentoService', '$location', '$scope', '$mdDialog'];
+    cadastroInstituicaoController.$inject = ['instituicaoService', '$location', '$scope', '$mdDialog'];
 
-    function cadastroEstabelecimentoController(estabelecimentoService, $location, $scope, $mdDialog) {
+    function cadastroInstituicaoController(instituicaoService, $location, $scope, $mdDialog) {
         var vm = this;
         vm.novoUsuario = {};
-        vm.tipoEstabelecimentoList = [{ nome: "Cinema/Teatro" }, { nome: "Shows/Eventos" }, { nome: "Transporte" }];
 
 
         vm.salvarNovoUsuario = function() {
@@ -22,7 +21,7 @@
                 };
                 $scope.$emit('notify', notify);
             } else {
-                estabelecimentoService.criarEstabelecimento(vm.novoUsuario).then(function(response) {
+                instituicaoService.criarInstituicao(vm.novoUsuario).then(function(response) {
                     if (response.status === 0) {
                         var notify = {
                             type: 'success',
@@ -47,8 +46,8 @@
 
         vm.showModalTermos = function(ev) {
             $mdDialog.show({
-                controller: cadastroEstabelecimentoController,
-                templateUrl: 'src/public/estabelecimento/termosAceite.html',
+                controller: cadastroInstituicaoController,
+                templateUrl: 'src/public/instituicao/termosAceite.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
