@@ -28,6 +28,6 @@
   border-radius: 2px;
   color: red;
 }
-.upload-files{
-  
+md-sidenav.md-closed.md-locked-open-add, md-sidenav.md-locked-open, md-sidenav.md-locked-open-add, md-sidenav.md-locked-open-remove, md-sidenav.md-locked-open-remove.md-closed, md-sidenav.md-locked-open.md-closed, md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed.md-sidenav-right{
+  position: absolute !important;
 }
