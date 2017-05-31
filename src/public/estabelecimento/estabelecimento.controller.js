@@ -3,8 +3,8 @@
   angular.module('public')
   .controller('estabelecimentoController',estabelecimentoController);
 
-  estabelecimentoController.$inject = ['alunoService' ,'$scope', '$mdSidenav'];
-  function estabelecimentoController(alunoService, $scope , $mdSidenav) {
+  estabelecimentoController.$inject = ['alunoService' ,'$scope', '$mdSidenav' , '$location', 'authService' ];
+  function estabelecimentoController(alunoService, $scope , $mdSidenav, $location , authService) {
     var vm = this;
     vm.consultaCpf = "";
     vm.usuarioConsulta = {};
@@ -36,7 +36,10 @@
       vm.toggle = !vm.toggle;
     }
 
-
+   vm.logout = function(){
+    authService.logout();
+    $location.path("/login");
+  }
 
   }
 })();

@@ -14,20 +14,20 @@
       </md-button>
     </div>
   </md-toolbar>
-  <md-menu>
-    <md-menu-content width="4">
+ 
+    <md-content width="4">
       <md-menu-item>
-        <md-button  class="md-primary col-xs-11" aria-label="true" >
+        <md-button  class="md-primary" aria-label="true" >
           <i class="fa fa-pencil-square-o" aria-hidden="true"> Verificar Matrícula</i>
         </md-button>
       </md-menu-item>
       <md-menu-item>
-        <md-button class="md-primary col-xs-11" aria-label="true">
+        <md-button class="md-primary" aria-label="true" ng-click="estabelecimentoCtrl.logout()">
           <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
         </md-button>
       </md-menu-item>
-    </md-menu-content>
-  </md-menu>
+    </md-content>
+
 </md-sidenav>
 <md-button class="md-fab md-raised" aria-label="true" ng-show="!estabelecimentoCtrl.toggle" ng-click="estabelecimentoCtrl.toggleSideNav()" >
   <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
@@ -35,36 +35,9 @@
 </div>
 
 
-
-  <!-- <div class="col-sm-3" style="padding : 0px">
-    <md-toolbar>
-      <md-card >
-       <md-card-title >
-         <md-card-title-text>
-           <span class="md-headline">Bem Vindo!</span>
-           <span class="md-subhead">Estabelecimento logado</span>
-         </md-card-title-text>
-         <md-card-title-media>
-           <div class="md-media-sm card-media">
-             <img ng-src="img/teste.jpg" width="50px" height="50px" alt="">
-           </div>
-         </md-card-title-media>
-       </md-card-title>
-     </md-card>
-   </md-toolbar>
-   <md-content layout-padding class="text-center" >
-    <md-button  class="md-primary col-xs-11" aria-label="true" >
-      <i class="fa fa-pencil-square-o" aria-hidden="true">Verificar Matrícula</i>
-    </md-button>
-    <a ui-sref="login"><md-button class="md-primary col-xs-11" aria-label="true">
-      <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
-    </md-button></a>
-  </md-content>
-</div> -->
-
 <div flex="80" style="padding: 30px">
   <form name="formConsulta" novalidate>
-    <md-input-container class="col-xs-offset-3 col-xs-4">
+    <md-input-container class="col-xs-offset-2 col-xs-4">
       <label>Consulte pelo CPF</label>
       <input type="text" ng-model="estabelecimentoCtrl.consultaCpf" ui-br-cpf-mask ng-keypress="($event.keyCode === 13 && !formConsulta.$invalid) && estabelecimentoCtrl.consultar() ">
     </md-input-container>
