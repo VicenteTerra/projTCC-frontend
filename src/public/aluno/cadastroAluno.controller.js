@@ -46,6 +46,7 @@
                 };
                 $scope.$emit('notify', notify);
             } else {
+                vm.novoUsuario.instituicao = vm.instituicaoSelected.id;
                 alunoService.criarAluno(vm.novoUsuario).then(function(response) {
                     if (response.status === 0) {
                         var notify = {

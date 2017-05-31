@@ -13,20 +13,16 @@
         </md-input-container>
         <md-input-container class="col-xs-12">
           <label>Senha</label>
-          <input type="password" ng-model="loginCtrl.senha" name="senha" required>
+          <input type="password" ng-model="loginCtrl.senha" name="senha" ng-keypress="$event.keyCode === 13 && loginCtrl.login()" required>
         </md-input-container>
       </div>
       <div class="form-group col-xs-6">
         <md-button class="md-raised md-primary" ng-click="loginCtrl.login()" ng-disabled="formLogin.$invalid"> Login</md-button>
       </div>
       <div class="form-group col-xs-6 text-right">
-        <md-button class="md-raised md-primary" ui-sref="cadastroSelector" aria-label="true">
+        <md-button class="md-raised md-primary" ui-sref="cadastroSelector" title="Cadastrar" aria-label="true">
           <i class="fa fa-user-plus fa-lg" aria-hidden="true"></i></md-button>
       </div>
     </form>
-    
-    <div class="text-center" style="color: red;">
-      {{loginCtrl.msg}}
-    </div>
   </md-card>
 </div>
