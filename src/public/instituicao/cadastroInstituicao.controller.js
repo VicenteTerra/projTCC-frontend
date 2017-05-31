@@ -3,9 +3,9 @@
     angular.module('public')
     .controller('cadastroInstituicaoController', cadastroInstituicaoController);
 
-    cadastroInstituicaoController.$inject = ['instituicaoService', '$location', '$scope', '$mdDialog'];
+    cadastroInstituicaoController.$inject = ['instituicaoService', '$location', '$scope', '$mdDialog' , 'md5'];
 
-    function cadastroInstituicaoController(instituicaoService, $location, $scope, $mdDialog) {
+    function cadastroInstituicaoController(instituicaoService, $location, $scope, $mdDialog , md5) {
         var vm = this;
         vm.novoUsuario = {};
 
@@ -21,6 +21,7 @@
                 };
                 $scope.$emit('notify', notify);
             } else {
+                vm.novoUsuario.senha = md5.createHash(vm.novoUsuario.senha);
                 instituicaoService.criarInstituicao(vm.novoUsuario).then(function(response) {
                     if (response.status === 0) {
                         var notify = {

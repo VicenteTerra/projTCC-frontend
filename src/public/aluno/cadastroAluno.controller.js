@@ -3,12 +3,13 @@
     angular.module('public')
     .controller('cadastroAlunoController', cadastroAlunoController);
 
-    cadastroAlunoController.$inject = ['alunoService','instituicaoService', '$location', '$scope', '$state', '$mdDialog'];
+    cadastroAlunoController.$inject = ['alunoService','instituicaoService', '$location', '$scope', 
+    '$state', '$mdDialog' , 'md5'];
 
-    function cadastroAlunoController(alunoService, instituicaoService, $location, $scope, $state, $mdDialog) {
+    function cadastroAlunoController(alunoService, instituicaoService, $location, $scope, $state, $mdDialog , md5) {
         var vm = this;
         vm.novoUsuario = {};
-        vm.instituicaoList = {};
+        vm.instituicaoList = [];
         vm.instituicaoSelected = {};
 
         instituicaoService.getInstituicoes().then(function(response) {
@@ -36,7 +37,6 @@
         }
 
         vm.salvarNovoUsuario = function() {
-            console.log(vm.novoUsuario);
             if (vm.novoUsuario.senha != vm.novoUsuario.confirmaSenha) {
                 var notify = {
                     type: 'error',
@@ -46,7 +46,9 @@
                 };
                 $scope.$emit('notify', notify);
             } else {
-                vm.novoUsuario.instituicao = vm.instituicaoSelected.id;
+                console.log(vm.instituicaoSelected)
+                vm.novoUsuario.instituicao = vm.instituicaoSelected;
+                vm.novoUsuario.senha = md5.createHash(vm.novoUsuario.senha);
                 alunoService.criarAluno(vm.novoUsuario).then(function(response) {
                     if (response.status === 0) {
                         var notify = {

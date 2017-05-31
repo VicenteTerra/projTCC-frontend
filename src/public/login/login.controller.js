@@ -3,14 +3,12 @@
   angular.module('public')
   .controller('loginController', loginController);
 
-  loginController.$inject = ['$location', 'authService', '$scope'];
-  function loginController($location, authService, $scope) {
+  loginController.$inject = ['$location', 'authService', '$scope' , 'md5'];
+  function loginController($location, authService, $scope , md5) {
     var vm = this;
-    vm.email = "";
-    vm.password = "";
 
     vm.login = function () {
-
+      vm.senha = md5.createHash(vm.senha);
       authService.login(vm.email, vm.senha).then(function (response) {
         if (response.status === 0) {
           if(response.userType === 0){

@@ -3,9 +3,9 @@
     angular.module('public')
     .controller('cadastroEstabelecimentoController', cadastroEstabelecimentoController);
 
-    cadastroEstabelecimentoController.$inject = ['estabelecimentoService', '$location', '$scope', '$mdDialog'];
+    cadastroEstabelecimentoController.$inject = ['estabelecimentoService', '$location', '$scope', '$mdDialog' ,'md5'];
 
-    function cadastroEstabelecimentoController(estabelecimentoService, $location, $scope, $mdDialog) {
+    function cadastroEstabelecimentoController(estabelecimentoService, $location, $scope, $mdDialog ,md5) {
         var vm = this;
         vm.novoUsuario = {};
         vm.tipoEstabelecimentoList = [{ nome: "Cinema/Teatro" }, { nome: "Shows/Eventos" }, { nome: "Transporte" }];
@@ -22,6 +22,7 @@
                 };
                 $scope.$emit('notify', notify);
             } else {
+                vm.novoUsuario.senha = md5.createHash(vm.novoUsuario.senha);
                 estabelecimentoService.criarEstabelecimento(vm.novoUsuario).then(function(response) {
                     if (response.status === 0) {
                         var notify = {

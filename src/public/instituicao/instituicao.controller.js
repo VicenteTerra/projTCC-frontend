@@ -4,7 +4,7 @@
 	.controller('instituicaoController',instituicaoController);
 
 	instituicaoController.$inject = ['authService' ];
-	function instituicaoController(authService) {
+	function instituicaoController(autService) {
 		var vm = this;
 
 		vm.logout = function(){
