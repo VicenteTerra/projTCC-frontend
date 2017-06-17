@@ -9,7 +9,7 @@
 
     vm.login = function () {
       vm.senha = md5.createHash(vm.senha);
-      authService.login(vm.email, vm.senha).then(function (response) {
+      authService.login(vm.email , vm.senha).then(function (response) {
         if (response.status === 0) {
           if(response.userType === 0){
            $location.path('/instituicao');
@@ -22,6 +22,8 @@
         }
       }
       else {
+        vm.email = "";
+        vm.senha = "";
         var notify = {
           type: 'error',
           title: 'Ops... Algo deu errado!',

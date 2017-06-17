@@ -2,10 +2,10 @@
   <md-card class="page" >
     <md-card-title>
       <md-card-title-text class="text-center">
-        <span class="md-headline">Bem-vindo! </span>
+        <span class="md-headline">Bem-vindo!</span>
       </md-card-title-text>
     </md-card-title>
-    <form class="col-xs-12" novalidate name="formLogin">
+    <form class="col-xs-12" novalidate name="formLogin" data-loading>
       <div class="form-group">
         <md-input-container class="col-xs-12">
           <label>E-mail</label>
@@ -17,7 +17,7 @@
         </md-input-container>
       </div>
       <div class="form-group col-xs-6">
-        <md-button class="md-raised md-primary" ng-click="loginCtrl.login()" ng-disabled="formLogin.$invalid"> Login</md-button>
+        <md-button class="md-raised md-primary" ng-click="loginCtrl.login()" ng-disabled="formLogin.$invalid" > Login</md-button>
       </div>
       <div class="form-group col-xs-6 text-right">
         <md-button class="md-raised md-primary" ui-sref="cadastroSelector" title="Cadastrar" aria-label="true">

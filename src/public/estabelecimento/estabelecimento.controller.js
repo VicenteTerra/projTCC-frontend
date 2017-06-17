@@ -3,18 +3,20 @@
   angular.module('public')
   .controller('estabelecimentoController',estabelecimentoController);
 
-  estabelecimentoController.$inject = ['alunoService' ,'$scope', '$mdSidenav' , '$location', 'authService' ];
-  function estabelecimentoController(alunoService, $scope , $mdSidenav, $location , authService) {
+  estabelecimentoController.$inject = ['alunoService' ,'$scope', '$mdSidenav' , '$location', 'authService', '$window' ];
+  function estabelecimentoController(alunoService, $scope , $mdSidenav, $location , authService , $window) {
     var vm = this;
     vm.consultaCpf = "";
     vm.usuarioConsulta = {};
     vm.showResultConsulta = false;
     vm.toggle = true;
+    vm.usuarioLogado = authService.getUserInfo().userName.split(' ')[0];
 
     vm.consultar = function () {
       alunoService.getAlunoByCpf(vm.consultaCpf).then(function (response) {
         if(response.status == 0){
           vm.usuarioConsulta = response.alunoConsulta;
+          console.log(vm.usuarioConsulta);
           vm.showResultConsulta = true;
         }else{
           var notify = {
