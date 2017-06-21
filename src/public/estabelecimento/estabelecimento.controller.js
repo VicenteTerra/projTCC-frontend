@@ -3,20 +3,21 @@
   angular.module('public')
   .controller('estabelecimentoController',estabelecimentoController);
 
-  estabelecimentoController.$inject = ['alunoService' ,'$scope', '$mdSidenav' , '$location', 'authService', '$window' ];
-  function estabelecimentoController(alunoService, $scope , $mdSidenav, $location , authService , $window) {
+  estabelecimentoController.$inject = ['alunoService' ,'$scope', '$mdSidenav' , '$location', 'authService', 
+  '$window' , '$base64' ];
+  function estabelecimentoController(alunoService, $scope , $mdSidenav, $location , authService , $window , $base64) {
     var vm = this;
-    vm.consultaCpf = "";
+    vm.consultaMat = "";
     vm.usuarioConsulta = {};
     vm.showResultConsulta = false;
     vm.toggle = true;
     vm.usuarioLogado = authService.getUserInfo().userName.split(' ')[0];
 
     vm.consultar = function () {
-      alunoService.getAlunoByCpf(vm.consultaCpf).then(function (response) {
+      alunoService.getAlunoByCpf(vm.consultaMat).then(function (response) {
         if(response.status == 0){
           vm.usuarioConsulta = response.alunoConsulta;
-          console.log(vm.usuarioConsulta);
+          //console.log(vm.usuarioConsulta);
           vm.showResultConsulta = true;
         }else{
           var notify = {
@@ -31,17 +32,17 @@
     }
     vm.limparConsulta = function(){
       vm.showResultConsulta = false;
-      vm.consultaCpf = "";
+      vm.consultaMat = "";
     }
 
     vm.toggleSideNav = function(){
       vm.toggle = !vm.toggle;
     }
 
-   vm.logout = function(){
-    authService.logout();
-    $location.path("/login");
-  }
+    vm.logout = function(){
+      authService.logout();
+      $location.path("/login");
+    }
 
   }
 })();

@@ -17,59 +17,65 @@
         </div>
 
         <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>E-mail</label>
-                <input ng-model="cadastroAlunoCtrl.novoUsuario.email" required>
-            </md-input-container>
+         <md-input-container class="md-block" flex-gt-sm>
+            <label>CPF</label>
+            <input name="cpf" ng-model="cadastroAlunoCtrl.novoUsuario.cpf" required ui-br-cpf-mask>
+        </md-input-container>
 
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>Celular</label>
-                <input name="cel" ng-model="cadastroAlunoCtrl.novoUsuario.celular" ui-br-phone-number>
-            </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Matrícula</label>
+            <input name="matricula" ng-model="cadastroAlunoCtrl.novoUsuario.matricula" required >
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Celular</label>
+            <input name="cel" ng-model="cadastroAlunoCtrl.novoUsuario.celular" ui-br-phone-number>
+        </md-input-container>
+    </div>
+
+    <div layout-gt-sm="row"> 
+
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>E-mail</label>
+            <input ng-model="cadastroAlunoCtrl.novoUsuario.email" required>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Instituição de ensino</label>
+            <md-select ng-model="cadastroAlunoCtrl.instituicaoSelected" required>
+                <md-option ng-if="cadastroAlunoCtrl.instituicaoList.size() > 0"><em>Nenhuma Instituição Cadastrada</em></md-option>
+                <md-option ng-repeat="inst in cadastroAlunoCtrl.instituicaoList track by inst.id" ng-value="inst.id">
+                    {{inst.nome}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Senha</label>
+            <input ng-model="cadastroAlunoCtrl.novoUsuario.senha" type="password" required>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Repita sua senha</label>
+            <input ng-model="cadastroAlunoCtrl.novoUsuario.confirmaSenha" type="password" required>
+        </md-input-container>
+    </div>
+
+    <div layout-gt-sm="row">
+        <div class="col-xs-12">
+            <md-checkbox ng-model="cadastroAlunoCtrl.termoAceite" aria-label="termoAceite" required>
+            </md-checkbox>
+            Aceito os <a href="" ng-click="cadastroAlunoCtrl.showModalTermos($event)">termos e condições</a> de uso do sistema.*
         </div>
+    </div>
 
-        <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>CPF</label>
-                <input name="cpf" ng-model="cadastroAlunoCtrl.novoUsuario.cpf" required ui-br-cpf-mask>
-            </md-input-container>
+    <div layout-gt-sm="row">
+        <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroAlunoCtrl.salvarNovoUsuario()">Salvar</md-button>
+        <md-button class="md-warning md-raised" ui-sref="cadastroSelector">Voltar</md-button>
 
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>Instituição de ensino</label>
-                <md-select ng-model="cadastroAlunoCtrl.instituicaoSelected" required>
-                    <md-option ng-if="cadastroAlunoCtrl.instituicaoList.size() > 0"><em>Nenhuma Instituição Cadastrada</em></md-option>
-                    <md-option ng-repeat="inst in cadastroAlunoCtrl.instituicaoList track by id" ng-value="inst.id">
-                        {{inst.nome}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
-        </div>
+    </div>
 
-        <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>Senha</label>
-                <input ng-model="cadastroAlunoCtrl.novoUsuario.senha" type="password" required>
-            </md-input-container>
-
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>Repita sua senha</label>
-                <input ng-model="cadastroAlunoCtrl.novoUsuario.confirmaSenha" type="password" required>
-            </md-input-container>
-        </div>
-
-        <div layout-gt-sm="row">
-            <div class="col-xs-12">
-                <md-checkbox ng-model="cadastroAlunoCtrl.termoAceite" aria-label="termoAceite" required>
-                </md-checkbox>
-                Aceito os <a href="" ng-click="cadastroAlunoCtrl.showModalTermos($event)">termos e condições</a> de uso do sistema.*
-            </div>
-        </div>
-
-        <div layout-gt-sm="row">
-            <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroAlunoCtrl.salvarNovoUsuario()">Salvar</md-button>
-            <md-button class="md-warning md-raised" ui-sref="cadastroSelector">Voltar</md-button>
-
-        </div>
-
-    </form>
+</form>
 </md-card>

@@ -54,23 +54,6 @@
                 <input ng-model="cadastroInstituicaoCtrl.novoUsuario.confirmaSenha" type="password" required>
             </md-input-container>
         </div>
-        <div layout-gt-sm="row">
-            <div class="col-xs-6">
-                <md-checkbox ng-model="cadastroInstituicaoCtrl.termoAceite" aria-label="termoAceite" required>
-                </md-checkbox>
-                Aceito os <a href="" ng-click="cadastroInstituicaoCtrl.showModalTermos($event)">termos e condições</a> de 
-                uso do sistema.*
-            </div>
-
-
-           <!--  <input type="file" ng-model="cadastroInstituicaoCtrl.novoUsuario.files" base-sixty-four-input maxsize="1000000" multiple>
-            <table>
-                <tr ng-repeat="file in cadastroInstituicaoCtrl.novoUsuario.files">
-                    <td>{{file.filename}}</td>
-                </tr>
-            </table> -->
-        </div>
-
 
         <div layout-gt-sm="row">
             <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroInstituicaoCtrl.salvarNovoUsuario()">Salvar</md-button>
