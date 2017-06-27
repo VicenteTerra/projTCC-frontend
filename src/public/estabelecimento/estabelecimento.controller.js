@@ -20,6 +20,7 @@
           //console.log(vm.usuarioConsulta);
           vm.showResultConsulta = true;
         }else{
+          vm.usuarioConsulta = null;
           var notify = {
             type: 'error',
             title: response.message,
