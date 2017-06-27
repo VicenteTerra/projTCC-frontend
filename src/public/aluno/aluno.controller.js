@@ -8,6 +8,8 @@
     var vm = this;
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
+    vm.usuarioLogado = authService.getUserInfo().userName.split(' ')[0];
+
 
     function buildToggler(componentId) {
       return function() {
