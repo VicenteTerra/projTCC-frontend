@@ -1,33 +1,33 @@
-<md-card class="page col-sm-8 col-sm-offset-2 col-xs-12">
+<md-card layout-gt-sm-lg="row" flex-lg="80" flex-offset-lg="10">
     <div class="text-center">
         <h3>Cadastro de Usuário</h3>
     </div>
 
-    <form name="userForm" style="padding: 5px">
+    <form name="userForm" class="pad10">
         <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Nome completo</label>
                 <input ng-model="cadastroAlunoCtrl.novoUsuario.nome" required>
             </md-input-container>
 
-            <md-input-container class="md-block" flex-gt-sm>
+            <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Data de nascimento</label>
                 <md-datepicker aria-label="true" ng-model="cadastroAlunoCtrl.novoUsuario.dataNascimento" md-open-on-focus required></md-datepicker>
             </md-input-container>
         </div>
 
         <div layout-gt-sm="row">
-         <md-input-container class="md-block" flex-gt-sm>
+         <md-input-container class="md-block pad10" flex-gt-sm>
             <label>CPF</label>
             <input name="cpf" ng-model="cadastroAlunoCtrl.novoUsuario.cpf" required ui-br-cpf-mask>
         </md-input-container>
 
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container class="md-block pad10" flex-gt-sm>
             <label>Matrícula</label>
             <input name="matricula" ng-model="cadastroAlunoCtrl.novoUsuario.matricula" required >
         </md-input-container>
 
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container class="md-block pad10" flex-gt-sm>
             <label>Celular</label>
             <input name="cel" ng-model="cadastroAlunoCtrl.novoUsuario.celular" ui-br-phone-number>
         </md-input-container>
@@ -35,12 +35,12 @@
 
     <div layout-gt-sm="row"> 
 
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container class="md-block pad10" flex-gt-sm>
             <label>E-mail</label>
             <input ng-model="cadastroAlunoCtrl.novoUsuario.email" required>
         </md-input-container>
 
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container class="md-block pad10" flex-gt-sm>
             <label>Instituição de ensino</label>
             <md-select ng-model="cadastroAlunoCtrl.instituicaoSelected" required>
                 <md-option ng-if="cadastroAlunoCtrl.instituicaoList.size() > 0"><em>Nenhuma Instituição Cadastrada</em></md-option>
@@ -52,12 +52,12 @@
     </div>
 
     <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container class="md-block pad10" flex-gt-sm>
             <label>Senha</label>
             <input ng-model="cadastroAlunoCtrl.novoUsuario.senha" type="password" required>
         </md-input-container>
 
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container class="md-block pad10" flex-gt-sm>
             <label>Repita sua senha</label>
             <input ng-model="cadastroAlunoCtrl.novoUsuario.confirmaSenha" type="password" required>
         </md-input-container>
@@ -71,10 +71,9 @@
         </div>
     </div>
 
-    <div layout-gt-sm="row">
+    <div layout-gt-sm="row" class="pad10">
         <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroAlunoCtrl.salvarNovoUsuario()">Salvar</md-button>
         <md-button class="md-warning md-raised" ui-sref="cadastroSelector">Voltar</md-button>
-
     </div>
 
 </form>

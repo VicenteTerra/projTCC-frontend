@@ -34,3 +34,10 @@ md-sidenav.md-locked-open-remove, md-sidenav.md-locked-open-remove.md-closed,
  md-sidenav.md-locked-open.md-closed.md-sidenav-right{
   position: absolute !important;
 }
+.pad10{
+  padding: 10px;
+}
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
+  display: inline;
+}
