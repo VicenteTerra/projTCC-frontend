@@ -27,5 +27,12 @@
             });
         }
 
+        service.getEstabelecimentos = function(){
+           return $http.get('http://localhost:9000/estabelecimento/all')
+            .then(function(response) {
+                return response.data;
+            }); 
+        }
+
     }
 })();

@@ -1,4 +1,4 @@
-<md-card  layout-gt-sm-lg="row" flex-lg="80" flex-offset-lg="10">
+<md-card  class="col-xs-8 col-xs-offset-2" >
     <div class="text-center">
         <h3>Cadastro de Estabelecimentos</h3>
     </div>
@@ -77,12 +77,12 @@
                 <div flex>
                     <table>
                         <tr ng-repeat="file in cadastroEstabelecimentoCtrl.novoUsuario.files">
-                           <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{file.filename}}</td>
-                        </tr>
-                    </table>  
-                </div>         
-                <div flex>
-                   <label class="md-button md-primary md-raised">
+                         <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{file.filename}}</td>
+                     </tr>
+                 </table>  
+             </div>         
+             <div flex>
+                 <label class="md-button md-primary md-raised">
                     <span>Upload de Documentos</span>
                     <i class="material-icons"> file_upload</i>
                     <input style="display: none;" type="file" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.files" 

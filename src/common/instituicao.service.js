@@ -32,5 +32,38 @@
             });
         }
 
+        service.downloadDoc = function(cnpj , nome){
+            return $http.get('http://localhost:9000/instituicao/downloadDoc/' + cnpj+'/'+nome, {
+                responseType : 'arraybuffer'
+            }).then(function(response) {
+               return response.data;
+           });
+        }
+        service.listDocumentos = function(cnpj, id){
+           return $http.get('http://localhost:9000/instituicao/listFilesEstabelecimento/' + cnpj ).then(
+            function(response) {
+               return response.data;
+           });
+       }
+       service.autoriza = function(idEstab , idInst){
+        return $http.get('http://localhost:9000/instituicao/autorizaEstabelecimento/' + idEstab+ '/' + idInst).then(
+            function(response) {
+               return response.data;
+           });
     }
+    service.desautoriza = function(idEstab , idInst){
+        return $http.get('http://localhost:9000/instituicao/desautorizaEstabelecimento/' + idEstab+ '/' + idInst).then(
+            function(response) {
+               return response.data;
+           });
+    }
+
+    service.getEstabelecimentos = function(id){
+     return $http.get('http://localhost:9000/instituicao/getEstabelecimentosInst/'+id)
+     .then(function(response) {
+        return response.data;
+    }); 
+ }
+}
+
 })();
