@@ -12,9 +12,10 @@
     vm.showResultConsulta = false;
     vm.toggle = true;
     vm.usuarioLogado = authService.getUserInfo().userName.split(' ')[0];
+    vm.userid = authService.getUserInfo().userId;
 
     vm.consultar = function () {
-      alunoService.getAlunoByCpf(vm.consultaMat).then(function (response) {
+      alunoService.getAlunoByCpf(vm.consultaMat , vm.userid).then(function (response) {
         if(response.status == 0){
           vm.usuarioConsulta = response.alunoConsulta;
           //console.log(vm.usuarioConsulta);
@@ -25,7 +26,7 @@
             type: 'error',
             title: response.message,
             content: '',
-            timeout: 5000 
+            timeout: 7000 
           };
           $scope.$emit('notify', notify);
         }

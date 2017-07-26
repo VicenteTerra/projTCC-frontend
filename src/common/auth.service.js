@@ -31,10 +31,7 @@
 
       $http({
         method: "POST",
-        url: "http://localhost:9000/usuario/logout",
-        headers: {
-          "access_token": userInfo.accessToken
-        }
+        url: "http://localhost:9000/usuario/logout"
       }).then(function(result) {
         $window.sessionStorage["userInfo"] = null;
         userInfo = null;

@@ -39,8 +39,8 @@
       });
   }
 
-  service.getAlunoByCpf = function (cpf) {
-    return $http.get('http://localhost:9000/aluno/consulta/' + cpf)
+  service.getAlunoByCpf = function (cpf , id) {
+    return $http.get('http://localhost:9000/aluno/consulta/' + cpf + "/" + id)
       .then(function (response) {
         return response.data;
       });
