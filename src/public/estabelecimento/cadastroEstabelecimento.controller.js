@@ -1,11 +1,11 @@
 (function() {
     'use strict';
     angular.module('public')
-    .controller('cadastroEstabelecimentoController', cadastroEstabelecimentoController);
+        .controller('cadastroEstabelecimentoController', cadastroEstabelecimentoController);
 
-    cadastroEstabelecimentoController.$inject = ['estabelecimentoService', '$location', '$scope', '$mdDialog' ,'md5'];
+    cadastroEstabelecimentoController.$inject = ['estabelecimentoService', '$location', '$scope', '$mdDialog', 'md5'];
 
-    function cadastroEstabelecimentoController(estabelecimentoService, $location, $scope, $mdDialog ,md5) {
+    function cadastroEstabelecimentoController(estabelecimentoService, $location, $scope, $mdDialog, md5) {
         var vm = this;
         vm.novoUsuario = {};
         vm.tipoEstabelecimentoList = [{ nome: "Cinema/Teatro" }, { nome: "Shows/Eventos" }, { nome: "Transporte" }];
@@ -48,18 +48,18 @@
 
         vm.showModalTermos = function(ev) {
             $mdDialog.show({
-                controller: cadastroEstabelecimentoController,
-                templateUrl: 'src/public/estabelecimento/termosAceite.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: true,
+                    controller: cadastroEstabelecimentoController,
+                    templateUrl: 'src/public/estabelecimento/termosAceite.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true,
                     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
                 })
-            .then(function(answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
-            }, function() {
-                $scope.status = 'You cancelled the dialog.';
-            });
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
         };
 
 

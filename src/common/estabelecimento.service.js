@@ -1,7 +1,7 @@
 (function() {
 
     angular.module('common')
-    .service('estabelecimentoService', estabelecimentoService);
+        .service('estabelecimentoService', estabelecimentoService);
 
     estabelecimentoService.$inject = ['$http'];
 
@@ -19,19 +19,19 @@
                 endereco: estabelecimento.endereco,
                 nomeResponsavel: estabelecimento.nomeResponsavel,
                 cpfResponsavel: estabelecimento.cpfResponsavel,
-                files : estabelecimento.files
+                files: estabelecimento.files
             }
             return $http.post('http://localhost:9000/estabelecimento/new', data)
-            .then(function(response) {
-                return response.data;
-            });
+                .then(function(response) {
+                    return response.data;
+                });
         }
 
-        service.getEstabelecimentos = function(){
-           return $http.get('http://localhost:9000/estabelecimento/all')
-            .then(function(response) {
-                return response.data;
-            }); 
+        service.getEstabelecimentos = function() {
+            return $http.get('http://localhost:9000/estabelecimento/all')
+                .then(function(response) {
+                    return response.data;
+                });
         }
 
     }

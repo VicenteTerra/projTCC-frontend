@@ -1,30 +1,30 @@
 <div flex-lg="60" flex-xs="100" flex-offset-lg="30" layout flex-sm="90">
-  <md-card class="page" flex-lg="66" flex-xs="100">
-    <md-card-title>
-      <md-card-title-text class="text-center">
-        <span class="md-headline">Bem-vindo!</span>
-      </md-card-title-text>
-    </md-card-title>
-    <md-card-content>
-      <form  novalidate name="formLogin" flex>
-      <md-input-container layout="row" class="pad10">
-          <label>E-mail</label>
-          <input type="text" ng-model="loginCtrl.email" name="email" required>
-        </md-input-container>
-        <md-input-container layout="row" class="pad10">
-          <label>Senha</label>
-          <input type="password" ng-model="loginCtrl.senha" name="senha" ng-keypress="$event.keyCode === 13 && loginCtrl.login()" required>
-        </md-input-container>
-      </form>
-    </md-card-content>
-    <md-card-content layout="row">
-      <div class="form-group" flex>
-        <md-button class="md-raised md-primary" ng-click="loginCtrl.login()" ng-disabled="formLogin.$invalid"> Login</md-button>
-      </div>
-      <div class="form-group text-right" flex>
-        <md-button class="md-raised md-primary" ui-sref="cadastroSelector" title="Cadastrar" aria-label="true">
-          <i class="fa fa-user-plus fa-lg" aria-hidden="true"></i></md-button>
-        </div>
-      </md-card-content>
+    <md-card class="page" flex-lg="66" flex-xs="100">
+        <md-card-title>
+            <md-card-title-text class="text-center">
+                <span class="md-headline">Bem-vindo!</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <form novalidate name="formLogin" flex>
+                <md-input-container layout="row" class="pad10">
+                    <label>E-mail</label>
+                    <input type="text" ng-model="loginCtrl.email" name="email" required>
+                </md-input-container>
+                <md-input-container layout="row" class="pad10">
+                    <label>Senha</label>
+                    <input type="password" ng-model="loginCtrl.senha" name="senha" ng-keypress="$event.keyCode === 13 && loginCtrl.login()" required>
+                </md-input-container>
+            </form>
+        </md-card-content>
+        <md-card-content layout="row">
+            <div class="form-group" flex>
+                <md-button class="md-raised md-primary" ng-click="loginCtrl.login()" ng-disabled="formLogin.$invalid"> Login</md-button>
+            </div>
+            <div class="form-group text-right" flex>
+                <md-button class="md-raised md-primary" ui-sref="cadastroSelector" title="Cadastrar" aria-label="true">
+                    <i class="fa fa-user-plus fa-lg" aria-hidden="true"></i></md-button>
+            </div>
+        </md-card-content>
     </md-card>
-  </div>
+</div>

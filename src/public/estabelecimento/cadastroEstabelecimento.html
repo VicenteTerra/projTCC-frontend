@@ -1,8 +1,7 @@
-<md-card  class="col-xs-8 col-xs-offset-2" >
+<md-card class="col-xs-8 col-xs-offset-2">
     <div class="text-center">
         <h3>Cadastro de Estabelecimentos</h3>
     </div>
-
     <form name="userForm" class="pad10">
         <div layout-gt-sm="row">
             <md-input-container class="md-block pad10" flex-gt-sm>
@@ -19,31 +18,26 @@
                 <label>Nome do reponsável pelo estabelecimento</label>
                 <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.nomeResponsavel" required>
             </md-input-container>
-
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>CPF do reponsável</label>
                 <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.cpfResponsavel" ui-br-cpf-mask required>
             </md-input-container>
         </div>
-
         <div layout-gt-sm="row">
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>E-mail</label>
                 <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.email" required>
             </md-input-container>
-
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Celular / Telefone</label>
                 <input name="cel" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.telefone" ui-br-phone-number required>
             </md-input-container>
         </div>
-
         <div layout-gt-sm="row">
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>CNPJ</label>
                 <input name="cpf" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.cnpj" required ui-br-cnpj-mask>
             </md-input-container>
-
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Tipo de Estabelecimento</label>
                 <md-select ng-model="cadastroEstabelecimentoCtrl.novoUsuario.tipoEstabelecimento">
@@ -53,13 +47,11 @@
                 </md-select>
             </md-input-container>
         </div>
-
         <div layout-gt-sm="row">
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Senha</label>
                 <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.senha" type="password" required>
             </md-input-container>
-
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Repita sua senha</label>
                 <input ng-model="cadastroEstabelecimentoCtrl.novoUsuario.confirmaSenha" type="password" required>
@@ -69,31 +61,28 @@
             <div flex style="padding: 10px;">
                 <md-checkbox ng-model="cadastroEstabelecimentoCtrl.termoAceite" aria-label="termoAceite" required>
                 </md-checkbox>
-                Aceito os <a href="" ng-click="cadastroEstabelecimentoCtrl.showModalTermos($event)">termos e condições</a> de 
-                uso do sistema.*
+                Aceito os <a href="" ng-click="cadastroEstabelecimentoCtrl.showModalTermos($event)">termos e condições</a> de uso do sistema.*
             </div>
-
             <div class="upload-files" flex>
                 <div flex>
                     <table>
                         <tr ng-repeat="file in cadastroEstabelecimentoCtrl.novoUsuario.files">
-                         <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{file.filename}}</td>
-                     </tr>
-                 </table>  
-             </div>         
-             <div flex>
-                 <label class="md-button md-primary md-raised">
-                    <span>Upload de Documentos</span>
-                    <i class="material-icons"> file_upload</i>
-                    <input style="display: none;" type="file" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.files" 
-                    base-sixty-four-input maxsize="1000000" multiple accept="application/pdf"/>
-                </label> 
-            </div>  
+                            <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{file.filename}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div flex>
+                    <label class="md-button md-primary md-raised">
+                        <span>Upload de Documentos</span>
+                        <i class="material-icons"> file_upload</i>
+                        <input style="display: none;" type="file" ng-model="cadastroEstabelecimentoCtrl.novoUsuario.files" base-sixty-four-input maxsize="1000000" multiple accept="application/pdf" />
+                    </label>
+                </div>
+            </div>
         </div>
-    </div>
-    <div layout-gt-sm="row" class="pad10" >
-        <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroEstabelecimentoCtrl.salvarNovoUsuario()">Salvar</md-button>
-        <md-button class="md-warning md-raised" ui-sref="cadastroSelector">Voltar</md-button>
-    </div>
-</form>
+        <div layout-gt-sm="row" class="pad10">
+            <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroEstabelecimentoCtrl.salvarNovoUsuario()">Salvar</md-button>
+            <md-button class="md-warning md-raised" ui-sref="cadastroSelector">Voltar</md-button>
+        </div>
+    </form>
 </md-card>

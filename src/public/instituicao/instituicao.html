@@ -1,66 +1,57 @@
 <section layout="row" flex>
-  <div flex="30" >
-  <md-sidenav flex="30"
-    class="md-sidenav-left hidden-xs" 
-    md-component-id="left"
-    md-is-locked-open="instituicaoCtrl.toggle"
-    md-whiteframe="4">
-
-    <md-toolbar class="md-theme-indigo">
-      <div class="md-toolbar-tools">
-       <h3 class="md-toolbar-tools">Bem vindo, {{instituicaoCtrl.usuarioLogado}} </h3>
-       <md-button class="md-icon-button" aria-label="More" ng-click="instituicaoCtrl.toggleSideNav()">
-        <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
-      </md-button>
-    </div>
-  </md-toolbar>
-
-  <md-content width="4">
-    <md-menu-item ng-click="instituicaoCtrl.getEstabelecimentos()">
-      <md-button  class="md-primary" aria-label="true" >
-        <i class="fa fa-pencil-square-o" aria-hidden="true" > Autorização de Estabelecimentos</i>
-      </md-button>
-    </md-menu-item>
-    <md-menu-item ng-click="instituicaoCtrl.logout()">
-      <md-button class="md-primary" aria-label="true" >
-        <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
-      </md-button>
-    </md-menu-item>
-  </md-content>
-</md-sidenav>
-<md-button class="md-fab md-raised" aria-label="true" ng-show="!instituicaoCtrl.toggle" ng-click="instituicaoCtrl.toggleSideNav()" >
-  <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
-</md-button>
-</div>
-
-<md-content flex="80">
-  <md-card flex ng-repeat="item in instituicaoCtrl.listaEstabelecimentos">
-    <md-card-content>
-      <div layout-align="start">
-        <label>Nome do estabelecimento:</label>
-        <h5> {{ item.nome }}</h5>
-      </div>
-      <div  layout-align="end center">
-        <label>Cnpj: </label>
-        <h6>{{ item.cnpj }}</h6>
-      </div>
-      <div class="md-actions" layout="column" layout-align="start">
-        <md-switch ng-model="instituicaoCtrl.listaEstabelecimentos[$index].autorizado" ng-click="instituicaoCtrl.changePermission(item.id ,$index)" aria-label="Switch 1">
-          <label ng-if="instituicaoCtrl.listaEstabelecimentos[$index].autorizado"> Autorizado</label>
-          <label ng-if="!instituicaoCtrl.listaEstabelecimentos[$index].autorizado">Não Autorizado</label>
-        </md-switch>
-      </div>
-      <md-card-actions layout-align="start"><md-button ng-click="instituicaoCtrl.listDocumentos(item.cnpj , $index)" class="md-raised md-primary"  aria-label="description" md-ripple-size="full|partial|auto">Obter Documentos</md-button></md-card-actions>
-      <md-card-actions layout-align="end center" >
-        <md-button  class="md-raised"  ng-click="instituicaoCtrl.download(item.cnpj , doc)" ng-repeat="doc in instituicaoCtrl.documentos[$index]">
-          <i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{doc}}
+    <div flex="30">
+        <md-sidenav flex="30" class="md-sidenav-left hidden-xs" md-component-id="left" md-is-locked-open="instituicaoCtrl.toggle" md-whiteframe="4">
+            <md-toolbar class="md-theme-indigo">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-toolbar-tools">Bem vindo, {{instituicaoCtrl.usuarioLogado}} </h3>
+                    <md-button class="md-icon-button" aria-label="More" ng-click="instituicaoCtrl.toggleSideNav()">
+                        <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content width="4">
+                <md-menu-item ng-click="instituicaoCtrl.getEstabelecimentos()">
+                    <md-button class="md-primary" aria-label="true">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"> Autorização de Estabelecimentos</i>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item ng-click="instituicaoCtrl.logout()">
+                    <md-button class="md-primary" aria-label="true">
+                        <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
+                    </md-button>
+                </md-menu-item>
+            </md-content>
+        </md-sidenav>
+        <md-button class="md-fab md-raised" aria-label="true" ng-show="!instituicaoCtrl.toggle" ng-click="instituicaoCtrl.toggleSideNav()">
+            <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
         </md-button>
-      </md-card-actions>
-    </md-card-content>
-
-  </md-card>
-</md-content>
-
-
-
+    </div>
+    <md-content flex="80">
+        <md-card flex ng-repeat="item in instituicaoCtrl.listaEstabelecimentos">
+            <md-card-content>
+                <div layout-align="start">
+                    <label>Nome do estabelecimento:</label>
+                    <h5> {{ item.nome }}</h5>
+                </div>
+                <div layout-align="end center">
+                    <label>Cnpj: </label>
+                    <h6>{{ item.cnpj }}</h6>
+                </div>
+                <div class="md-actions" layout="column" layout-align="start">
+                    <md-switch ng-model="instituicaoCtrl.listaEstabelecimentos[$index].autorizado" ng-click="instituicaoCtrl.changePermission(item.id ,$index)" aria-label="Switch 1">
+                        <label ng-if="instituicaoCtrl.listaEstabelecimentos[$index].autorizado"> Autorizado</label>
+                        <label ng-if="!instituicaoCtrl.listaEstabelecimentos[$index].autorizado">Não Autorizado</label>
+                    </md-switch>
+                </div>
+                <md-card-actions layout-align="start">
+                    <md-button ng-click="instituicaoCtrl.listDocumentos(item.cnpj , $index)" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto">Obter Documentos</md-button>
+                </md-card-actions>
+                <md-card-actions layout-align="end center">
+                    <md-button class="md-raised" ng-click="instituicaoCtrl.download(item.cnpj , doc)" ng-repeat="doc in instituicaoCtrl.documentos[$index]">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{doc}}
+                    </md-button>
+                </md-card-actions>
+            </md-card-content>
+        </md-card>
+    </md-content>
 </section>

@@ -1,11 +1,11 @@
 (function() {
     'use strict';
     angular.module('public')
-    .controller('cadastroInstituicaoController', cadastroInstituicaoController);
+        .controller('cadastroInstituicaoController', cadastroInstituicaoController);
 
-    cadastroInstituicaoController.$inject = ['instituicaoService', '$location', '$scope', '$mdDialog' , 'md5'];
+    cadastroInstituicaoController.$inject = ['instituicaoService', '$location', '$scope', '$mdDialog', 'md5'];
 
-    function cadastroInstituicaoController(instituicaoService, $location, $scope, $mdDialog , md5) {
+    function cadastroInstituicaoController(instituicaoService, $location, $scope, $mdDialog, md5) {
         var vm = this;
         vm.novoUsuario = {};
 
@@ -47,18 +47,18 @@
 
         vm.showModalTermos = function(ev) {
             $mdDialog.show({
-                controller: cadastroInstituicaoController,
-                templateUrl: 'src/public/instituicao/termosAceite.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: true,
+                    controller: cadastroInstituicaoController,
+                    templateUrl: 'src/public/instituicao/termosAceite.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true,
                     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
                 })
-            .then(function(answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
-            }, function() {
-                $scope.status = 'You cancelled the dialog.';
-            });
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
         };
 
 

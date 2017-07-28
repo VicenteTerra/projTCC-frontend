@@ -1,51 +1,52 @@
-(function () {
+(function() {
 
-  angular.module('common')
-  .service('alunoService' , alunoService);
+    angular.module('common')
+        .service('alunoService', alunoService);
 
-  alunoService.$inject = ['$http'];
-  function alunoService($http) {
-  var service = this
+    alunoService.$inject = ['$http'];
 
-  service.getAll = function () {
-    return $http.get('http://localhost:9000/aluno/all')
-              .then(function (response) {
-                return response.data;
-            });
-  }
+    function alunoService($http) {
+        var service = this
 
-  service.criarAluno = function (user) {
+        service.getAll = function() {
+            return $http.get('http://localhost:9000/aluno/all')
+                .then(function(response) {
+                    return response.data;
+                });
+        }
 
-    var data = {
-      nome: user.nome,
-      cpf: user.cpf,
-      email: user.email,
-      telefone: user.celular,
-      instituicao: user.instituicao,
-      dataNascimento: user.dataNascimento,
-      senha: user.senha
-    };
+        service.criarAluno = function(user) {
 
-  return $http.post('http://localhost:9000/aluno/new', data)
-    .then(function (response) {
-      return response.data;
-    });
-  }
+            var data = {
+                nome: user.nome,
+                cpf: user.cpf,
+                email: user.email,
+                telefone: user.celular,
+                instituicao: user.instituicao,
+                dataNascimento: user.dataNascimento,
+                senha: user.senha
+            };
 
-  service.removeAluno = function (id){
-    return $http.get('http://localhost:9000/aluno/delete/' + id)
-      .then(function (response) {
-        return response.data;
-      });
-  }
+            return $http.post('http://localhost:9000/aluno/new', data)
+                .then(function(response) {
+                    return response.data;
+                });
+        }
 
-  service.getAlunoByCpf = function (cpf , id) {
-    return $http.get('http://localhost:9000/aluno/consulta/' + cpf + "/" + id)
-      .then(function (response) {
-        return response.data;
-      });
-  }
+        service.removeAluno = function(id) {
+            return $http.get('http://localhost:9000/aluno/delete/' + id)
+                .then(function(response) {
+                    return response.data;
+                });
+        }
 
-}
+        service.getAlunoByCpf = function(cpf, id) {
+            return $http.get('http://localhost:9000/aluno/consulta/' + cpf + "/" + id)
+                .then(function(response) {
+                    return response.data;
+                });
+        }
+
+    }
 
 })();

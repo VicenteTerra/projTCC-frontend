@@ -2,7 +2,6 @@
     <div class="text-center">
         <h3>Cadastro de Instituições de Ensino</h3>
     </div>
-
     <form name="userForm" class="pad10">
         <div layout-gt-sm="row">
             <md-input-container class="md-block pad10" flex-gt-sm>
@@ -19,46 +18,38 @@
                 <label>Nome do reponsável pelo instituicao</label>
                 <input ng-model="cadastroInstituicaoCtrl.novoUsuario.nomeResponsavel" required>
             </md-input-container>
-
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>CPF do reponsável</label>
                 <input name="cel" ng-model="cadastroInstituicaoCtrl.novoUsuario.cpfResponsavel" ui-br-cpf-mask required>
             </md-input-container>
         </div>
-
         <div layout-gt-sm="row">
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>E-mail</label>
                 <input ng-model="cadastroInstituicaoCtrl.novoUsuario.email" required>
             </md-input-container>
-
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Celular / Telefone</label>
                 <input name="cel" ng-model="cadastroInstituicaoCtrl.novoUsuario.telefone" ui-br-phone-number required>
             </md-input-container>
-
             <md-input-container class="md-block pad10" flex-gt-sm>
-            <label>Nome da Classe de consulta</label>
+                <label>Nome da Classe de consulta</label>
                 <input name="cel" ng-model="cadastroInstituicaoCtrl.novoUsuario.classeConsulta" required>
             </md-input-container>
         </div>
-
         <div layout-gt-sm="row">
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Senha</label>
                 <input ng-model="cadastroInstituicaoCtrl.novoUsuario.senha" type="password" required>
             </md-input-container>
-
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Repita sua senha</label>
                 <input ng-model="cadastroInstituicaoCtrl.novoUsuario.confirmaSenha" type="password" required>
             </md-input-container>
         </div>
-
         <div layout-gt-sm="row" class="pad10">
             <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroInstituicaoCtrl.salvarNovoUsuario()">Salvar</md-button>
             <md-button class="md-warning md-raised" ui-sref="cadastroSelector">Voltar</md-button>
         </div>
-
     </form>
 </md-card>

@@ -1,5 +1,5 @@
-(function () {
+(function() {
 
-  angular.module('common', [])
+    angular.module('common', [])
 
 })();

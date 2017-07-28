@@ -1,12 +1,13 @@
 (function() {
     'use strict';
     angular.module('public')
-    .controller('cadastroAlunoController', cadastroAlunoController);
+        .controller('cadastroAlunoController', cadastroAlunoController);
 
-    cadastroAlunoController.$inject = ['alunoService','instituicaoService', '$location', '$scope', 
-    '$state', '$mdDialog' , 'md5'];
+    cadastroAlunoController.$inject = ['alunoService', 'instituicaoService', '$location', '$scope',
+        '$state', '$mdDialog', 'md5'
+    ];
 
-    function cadastroAlunoController(alunoService, instituicaoService, $location, $scope, $state, $mdDialog , md5) {
+    function cadastroAlunoController(alunoService, instituicaoService, $location, $scope, $state, $mdDialog, md5) {
         var vm = this;
         vm.novoUsuario = {};
         vm.instituicaoList = [];
@@ -20,17 +21,17 @@
             }
         });
 
-        vm.cadSelector = [{ nome: "Estabelecimento" }, { nome: "Aluno"} , {nome : "Instituição de Ensino"}];
+        vm.cadSelector = [{ nome: "Estabelecimento" }, { nome: "Aluno" }, { nome: "Instituição de Ensino" }];
         vm.cadSelected = {};
 
         vm.selectTypeCad = function() {
             if (vm.cadSelected === "Estabelecimento") {
                 $state.go("cadastroEstabelecimento");
-            } 
-            if(vm.cadSelected === "Aluno"){
+            }
+            if (vm.cadSelected === "Aluno") {
                 $state.go("cadastroAluno");
             }
-            if(vm.cadSelected === "Instituição de Ensino"){
+            if (vm.cadSelected === "Instituição de Ensino") {
                 $state.go("cadastroInstituicao");
             }
 
@@ -74,18 +75,18 @@
 
         vm.showModalTermos = function(ev) {
             $mdDialog.show({
-                controller: cadastroAlunoController,
-                templateUrl: 'src/public/aluno/termoAceiteAluno.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: true,
+                    controller: cadastroAlunoController,
+                    templateUrl: 'src/public/aluno/termoAceiteAluno.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true,
                     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
                 })
-            .then(function(answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
-            }, function() {
-                $scope.status = 'You cancelled the dialog.';
-            });
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
         };
 
     }
