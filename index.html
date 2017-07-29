@@ -20,6 +20,12 @@
     <div class="text-center">
         <img class="img-responsive" src="img/1_Primary_logo_on_transparent_306x67.png" />
     </div>
+    <div data-ng-if="loading" class="modal text-center" style="display: block; background-color: white">
+        <div class="text-center modal-header">
+            <img class="img-responsive" src="img/1_Primary_logo_on_transparent_306x67.png" />
+        </div>
+        <div class="modal-body" style="padding: 20%;background: url(img/loading.gif) no-repeat center center" ;></div>
+    </div>
     <ui-view>
     </ui-view>
     <footer></footer>
@@ -48,6 +54,7 @@
     <script type="text/javascript" src="src/common/auth.service.js"></script>
     <script type="text/javascript" src="src/common/estabelecimento.service.js"></script>
     <script type="text/javascript" src="src/common/instituicao.service.js"></script>
+    <script type="text/javascript" src="src/common/loading.service.js"></script>
     <!-- Public -->
     <script type="text/javascript" src="src/public/public.module.js"></script>
     <script type="text/javascript" src="src/public/public.routes.js"></script>
