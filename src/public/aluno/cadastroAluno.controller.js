@@ -4,14 +4,15 @@
         .controller('cadastroAlunoController', cadastroAlunoController);
 
     cadastroAlunoController.$inject = ['alunoService', 'instituicaoService', '$location', '$scope',
-        '$state', '$mdDialog', 'md5'
+        '$state', '$mdDialog', 'md5', 'estabelecimentoService'
     ];
 
-    function cadastroAlunoController(alunoService, instituicaoService, $location, $scope, $state, $mdDialog, md5) {
+    function cadastroAlunoController(alunoService, instituicaoService, $location, $scope, $state, $mdDialog, md5, estabelecimentoService) {
         var vm = this;
         vm.novoUsuario = {};
         vm.instituicaoList = [];
-        vm.instituicaoSelected = {};
+        vm.instituicaoSelected = null;
+        vm.listaEstabelecimentos = [];
 
         instituicaoService.getInstituicoes().then(function(response) {
             if (response.status === 0) {
@@ -73,6 +74,23 @@
             }
         }
 
+        vm.getEstabelecimentos = function(){
+            estabelecimentoService.getEstabelecimentosByInst(vm.instituicaoSelected).then(function(response){
+                 if (response.status === 0) {
+                        vm.listaEstabelecimentos = response.listaEstabelecimentos;
+                        console.log(vm.listaEstabelecimentos);
+                    } else {
+                        var notify = {
+                            type: 'error',
+                            title: 'Não foi possível realizar o cadastro!',
+                            content: '',
+                            timeout: 5000 //time in ms
+                        };
+                        $scope.$emit('notify', notify);
+                    }
+            });
+        }
+
         vm.showModalTermos = function(ev) {
             $mdDialog.show({
                     controller: cadastroAlunoController,
@@ -81,6 +99,23 @@
                     targetEvent: ev,
                     clickOutsideToClose: true,
                     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                })
+                .then(function(answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function() {
+                    $scope.status = 'You cancelled the dialog.';
+                });
+        };
+
+        vm.showModalEstabelecimentos = function(ev) {
+            $mdDialog.show({
+                    controller: cadastroAlunoController,
+                    templateUrl: 'src/public/aluno/modalEstabelecimentos.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true,
+                    fullscreen: $scope.customFullscreen,
+                    scope: $scope.$new()
                 })
                 .then(function(answer) {
                     $scope.status = 'You said the information was "' + answer + '".';

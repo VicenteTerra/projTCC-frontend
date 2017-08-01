@@ -34,5 +34,12 @@
                 });
         }
 
+        service.getEstabelecimentosByInst = function(id) {
+            return $http.get('http://localhost:9000/instituicao/getEstabelecimentosInst/' + id)
+                .then(function(response) {
+                    return response.data;
+                });
+        }
+
     }
 })();

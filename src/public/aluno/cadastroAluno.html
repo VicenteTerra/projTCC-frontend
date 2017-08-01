@@ -34,12 +34,15 @@
             </md-input-container>
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Instituição de ensino</label>
-                <md-select ng-model="cadastroAlunoCtrl.instituicaoSelected" required>
+                <md-select ng-model="cadastroAlunoCtrl.instituicaoSelected" required ng-change="cadastroAlunoCtrl.getEstabelecimentos()">
                     <md-option ng-if="cadastroAlunoCtrl.instituicaoList.size() > 0"><em>Nenhuma Instituição Cadastrada</em></md-option>
                     <md-option ng-repeat="inst in cadastroAlunoCtrl.instituicaoList track by inst.id" ng-value="inst.id">
                         {{inst.nome}}
                     </md-option>
                 </md-select>
+            </md-input-container>
+            <md-input-container>
+                <md-button class="md-raised md-primary" ng-click="cadastroAlunoCtrl.showModalEstabelecimentos($event)" aria-label="Clique para exibir alista de estabelecimentos" ng-disabled="cadastroAlunoCtrl.instituicaoSelected == null">Lista de Estabelecimentos</md-button>
             </md-input-container>
         </div>
         <div layout-gt-sm="row">
@@ -60,8 +63,8 @@
             </div>
         </div>
         <div layout-gt-sm="row" class="pad10">
-            <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroAlunoCtrl.salvarNovoUsuario()">Salvar</md-button>
-            <md-button class="md-warning md-raised" ui-sref="cadastroSelector">Voltar</md-button>
+            <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="cadastroAlunoCtrl.salvarNovoUsuario()" aria-label="Salvar cadastro">Salvar</md-button>
+            <md-button class="md-warning md-raised" ui-sref="cadastroSelector" aria-label="Voltar para página anterior">Voltar</md-button>
         </div>
     </form>
 </md-card>

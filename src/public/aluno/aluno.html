@@ -1,101 +1,31 @@
-
-  <section layout="row" flex>
-    <md-sidenav class="md-sidenav-left" md-component-id="left"
-                md-disable-backdrop md-whiteframe="4">
-
-      <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
-        
-      </md-toolbar>
-
-      <md-content layout-margin>
-        <p>
-          This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
-        </p>
-        <md-button ng-click="toggleLeft()" class="md-accent">
-          Close this Sidenav
-        </md-button>
-      </md-content>
-
+<section layout="row" flex>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+        </md-toolbar>
+        <md-content layout-margin>
+            <p>
+                This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+            </p>
+            <md-button ng-click="toggleLeft()" class="md-accent">
+                Close this Sidenav
+            </md-button>
+        </md-content>
     </md-sidenav>
-
     <md-content flex layout-padding>
-
-      <div layout="column" layout-align="top center">
-        <p>
-          Developers can also disable the backdrop of the sidenav.<br/>
-          This will disable the functionality to click outside to close the sidenav.
-        </p>
-
-        <div>
-          <md-button ng-click="toggleLeft()" class="md-raised">
-            Toggle Sidenav
-          </md-button>
-          
-           <md-button ng-click="alunoCtrl.logout()" class="md-raised">
-            sair
-          </md-button>
-          
-
-        </div>
-
-      </div>
-
-    </md-content>
-
-  </section>
-
-<!--<section layout="row" style=" min-height : 500px">
-  
-<md-button ng-click="alunoCtrl.toggleLeft()" class="md-raised">
-      Toggle Sidenav
-    </md-button>
-  <div class="col-xs-3 " style="padding: 0px">
-    <md-toolbar class="navbarStyle">
-      <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Bem Vindo!</span>
-            <span class="md-subhead">{{alunoCtrl.alunoLogado.nome}}</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media">
+        <div layout="column" layout-align="top center">
+            <p>
+                Developers can also disable the backdrop of the sidenav.
+                <br/> This will disable the functionality to click outside to close the sidenav.
+            </p>
+            <div>
+                <md-button ng-click="toggleLeft()" class="md-raised">
+                    Toggle Sidenav
+                </md-button>
+                <md-button ng-click="alunoCtrl.logout()" class="md-raised">
+                    sair
+                </md-button>
             </div>
-          </md-card-title-media>
-        </md-card-title>
-      </md-card>
-    </md-toolbar>
-    
-    <md-content layout-padding class="text-center">
-      <md-button class="md-primary col-xs-11" aria-label="true" ng-click="alunoCtrl.loadAlunos()">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"> Lista de Usuários</i>
-      </md-button>
-      <a ui-sref="login">
-        <md-button class="md-primary col-xs-11" aria-label="true">
-          <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
-        </md-button>
-      </a>
-    </md-content>
-  </div>
-
-
-  <div class="col-xs-9">
-    <md-list>
-      <div class="" ng-if="alunoCtrl.list.length > 0">
-        <h3>Usuários Cadastrados</h3>
-      </div>
-
-      <md-list-item class="md-3-line" ng-repeat="aluno in alunoCtrl.list track by $index">
-        <div class="md-list-item-text">
-          <h3>{{aluno.id}}</h3>
-          <h3>{{aluno.nome}}</h3>
-          <h4>{{aluno.cpf}}</h4>
         </div>
-        <md-button class="md-secondary" ng-click="alunoCtrl.removeAluno(aluno.id)">Remover</md-button>
-        <md-divider ng-if="!$last"></md-divider>
-      </md-list-item>
-    </md-list>
-  </div>
-
-
-</section>-->
+    </md-content>
+</section>
