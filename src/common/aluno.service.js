@@ -33,13 +33,32 @@
                 });
         }
 
+        service.updateAluno = function(aluno) {
+            return $http.post('http://localhost:9000/aluno/update', aluno)
+                .then(function(response) {
+                    return response.data;
+                });
+        }
+
+        service.changeAtivo = function(id) {
+            return $http.get('http://localhost:9000/aluno/changeAtivo/' + id)
+                .then(function(response) {
+                    return response.data;
+                });
+        }
+
         service.removeAluno = function(id) {
             return $http.get('http://localhost:9000/aluno/delete/' + id)
                 .then(function(response) {
                     return response.data;
                 });
         }
-
+        service.getAlunoById = function(id) {
+            return $http.get('http://localhost:9000/aluno/' + id)
+                .then(function(response) {
+                    return response.data;
+                });
+        }
         service.getAlunoByCpf = function(cpf, id) {
             return $http.get('http://localhost:9000/aluno/consulta/' + cpf + "/" + id)
                 .then(function(response) {

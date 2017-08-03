@@ -1,31 +1,75 @@
 <section layout="row" flex>
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
-        <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
-        </md-toolbar>
-        <md-content layout-margin>
-            <p>
-                This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
-            </p>
-            <md-button ng-click="toggleLeft()" class="md-accent">
-                Close this Sidenav
-            </md-button>
-        </md-content>
-    </md-sidenav>
-    <md-content flex layout-padding>
-        <div layout="column" layout-align="top center">
-            <p>
-                Developers can also disable the backdrop of the sidenav.
-                <br/> This will disable the functionality to click outside to close the sidenav.
-            </p>
-            <div>
-                <md-button ng-click="toggleLeft()" class="md-raised">
-                    Toggle Sidenav
-                </md-button>
-                <md-button ng-click="alunoCtrl.logout()" class="md-raised">
-                    sair
-                </md-button>
-            </div>
-        </div>
+    <div flex="30">
+        <md-sidenav flex="30" class="md-sidenav-left hidden-xs" md-component-id="left" md-is-locked-open="alunoCtrl.toggle" md-whiteframe="4">
+            <md-toolbar class="md-theme-indigo">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-toolbar-tools">Bem vindo, {{alunoCtrl.usuarioLogado}} </h3>
+                    <md-button class="md-icon-button" aria-label="More" ng-click="alunoCtrl.toggleSideNav()">
+                        <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content width="4">
+                <md-menu-item ng-click="alunoCtrl.loadAluno()">
+                    <md-button class="md-primary" aria-label="true">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"> Editar perfil</i>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item ng-click="alunoCtrl.logout()">
+                    <md-button class="md-primary" aria-label="true">
+                        <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
+                    </md-button>
+                </md-menu-item>
+            </md-content>
+        </md-sidenav>
+        <md-button class="md-fab md-raised" aria-label="true" ng-show="!alunoCtrl.toggle" ng-click="alunoCtrl.toggleSideNav()">
+            <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+        </md-button>
+    </div>
+    <md-content flex="80">
+        <md-card flex ng-if="alunoCtrl.aluno != null">
+            <md-card-content>
+                <div class="col-xs-12" layout-align="start" ng-if="!alunoCtrl.isEdit" style="margin-bottom: 5%;">
+                    <div class="col-xs-4">
+                        <label>Nome</label>
+                        <h5><i class="material-icons">face</i> {{ alunoCtrl.aluno.nome }}</h5>
+                    </div>
+                    <div class="col-xs-4">
+                        <label>Matrícula </label>
+                        <h5><i class="material-icons">face</i> {{ alunoCtrl.aluno.matricula }}</h5>
+                    </div>
+                    <div class="col-xs-4">
+                        <label>Insittuição </label>
+                        <h5><i class="material-icons">business</i> {{ alunoCtrl.aluno.instituicaoNome}}</h5>
+                    </div>
+                </div>
+                <div layout-align="start" ng-if="alunoCtrl.isEdit">
+                    <md-input-container class="md-block pad10" flex-gt-sm>
+                        <label>Nome completo</label>
+                        <input ng-model="alunoCtrl.aluno.nome">
+                    </md-input-container>
+                    <md-input-container class="md-block pad10" flex-gt-sm>
+                        <label>Matrícula</label>
+                        <input ng-model="alunoCtrl.aluno.matricula">
+                    </md-input-container>
+                    <md-input-container class="md-block pad10" flex-gt-sm>
+                        <label>Instituição de ensino</label>
+                        <md-select ng-model="alunoCtrl.instituicaoSelected">
+                            <md-option ng-if="alunoCtrl.instituicaoList.size() > 0"><em>Nenhuma Instituição Cadastrada</em></md-option>
+                            <md-option ng-repeat="inst in alunoCtrl.instituicaoList track by inst.id" ng-value="inst.id">
+                                {{inst.nome}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <md-card-actions layout-align="start">
+                    <md-button ng-click="alunoCtrl.toogleEdit()" ng-if="!alunoCtrl.isEdit" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto"> Editar informações</md-button>
+                    <md-button ng-click="alunoCtrl.changeAtivo()" ng-if="!alunoCtrl.isEdit && alunoCtrl.aluno.ativo == 1" class="md-raised md-warn" aria-label="description" md-ripple-size="full|partial|auto" layout-align="end center"> Desativar conta</md-button>
+                    <md-button ng-click="alunoCtrl.changeAtivo()" ng-if="!alunoCtrl.isEdit  && alunoCtrl.aluno.ativo == 0" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto" layout-align="end center"> Ativar conta</md-button>
+                    <md-button ng-click="alunoCtrl.updateAluno()" ng-if="alunoCtrl.isEdit" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto">Salvar</md-button>
+                    <md-button ng-click="alunoCtrl.toogleEdit()" ng-if="alunoCtrl.isEdit" class="md-raised md-default" aria-label="description" md-ripple-size="full|partial|auto">Cancelar</md-button>
+                </md-card-actions>
+            </md-card-content>
+        </md-card>
     </md-content>
 </section>
