@@ -3,10 +3,11 @@
     angular.module('common')
         .service('estabelecimentoService', estabelecimentoService);
 
-    estabelecimentoService.$inject = ['$http'];
+    estabelecimentoService.$inject = ['$http' , 'baseUrl'];
 
-    function estabelecimentoService($http) {
+    function estabelecimentoService($http , baseUrl) {
         var service = this;
+        console.log(baseUrl)
 
         service.criarEstabelecimento = function(estabelecimento) {
             var data = {
@@ -21,21 +22,21 @@
                 cpfResponsavel: estabelecimento.cpfResponsavel,
                 files: estabelecimento.files
             }
-            return $http.post('http://localhost:9000/estabelecimento/new', data)
+            return $http.post(baseUrl+'/estabelecimento/new', data)
                 .then(function(response) {
                     return response.data;
                 });
         }
 
         service.getEstabelecimentos = function() {
-            return $http.get('http://localhost:9000/estabelecimento/all')
+            return $http.get(baseUrl+'/estabelecimento/all')
                 .then(function(response) {
                     return response.data;
                 });
         }
 
         service.getEstabelecimentosByInst = function(id) {
-            return $http.get('http://localhost:9000/instituicao/getEstabelecimentosInst/' + id)
+            return $http.get(baseUrl+'/instituicao/getEstabelecimentosInst/' + id)
                 .then(function(response) {
                     return response.data;
                 });

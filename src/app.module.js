@@ -4,6 +4,7 @@
     angular.module('myApp', ['public'])
         .config(config)
         .run(auth)
+       
 
     config.$inject = ['$urlRouterProvider', '$mdThemingProvider' , '$httpProvider'];
 

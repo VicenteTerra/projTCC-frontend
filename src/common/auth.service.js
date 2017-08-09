@@ -3,16 +3,15 @@
     angular.module('common')
         .factory('authService', authService);
 
-    authService.$inject = ['$http', 'alunoService', '$q', '$window'];
+    authService.$inject = ['$http', 'alunoService', '$q', '$window', 'baseUrl'];
 
-    function authService($http, alunoService, $q, $window) {
+    function authService($http, alunoService, $q, $window, baseUrl) {
         var userInfo;
-
 
         function login(userName, password) {
             var deferred = $q.defer();
 
-            $http.post("http://localhost:9000/usuario/auth", {
+            $http.post(baseUrl + '/usuario/auth', {
                 userName: userName,
                 password: password
             }).then(function(result) {
@@ -31,7 +30,7 @@
 
             $http({
                 method: "POST",
-                url: "http://localhost:9000/usuario/logout"
+                url: baseUrl + '/usuario/logout'
             }).then(function(result) {
                 $window.sessionStorage["userInfo"] = null;
                 userInfo = null;
