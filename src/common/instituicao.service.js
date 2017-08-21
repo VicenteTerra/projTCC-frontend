@@ -16,7 +16,8 @@
                 senha: instituicao.senha,
                 endereco: instituicao.endereco,
                 nomeResponsavel: instituicao.nomeResponsavel,
-                cpfResponsavel: instituicao.cpfResponsavel
+                cpfResponsavel: instituicao.cpfResponsavel,
+                classeConsulta : instituicao.classeConsulta
 
             }
             return $http.post(baseUrl+'/instituicao/new', data)

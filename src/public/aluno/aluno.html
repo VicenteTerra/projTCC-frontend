@@ -28,6 +28,7 @@
     </div>
     <md-content flex="80">
         <md-card flex ng-if="alunoCtrl.aluno != null">
+            <md-card-header style="text-align: center; font-weight: bold; color: teal" >Informações do Usuário</md-card-header>
             <md-card-content>
                 <div class="col-xs-12" layout-align="start" ng-if="!alunoCtrl.isEdit" style="margin-bottom: 5%;">
                     <div class="col-xs-4">
@@ -39,7 +40,7 @@
                         <h5><i class="material-icons">face</i> {{ alunoCtrl.aluno.matricula }}</h5>
                     </div>
                     <div class="col-xs-4">
-                        <label>Insittuição </label>
+                        <label>Instituição </label>
                         <h5><i class="material-icons">business</i> {{ alunoCtrl.aluno.instituicaoNome}}</h5>
                     </div>
                 </div>

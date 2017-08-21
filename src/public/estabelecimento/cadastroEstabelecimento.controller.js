@@ -23,6 +23,7 @@
                 $scope.$emit('notify', notify);
             } else {
                 vm.novoUsuario.senha = md5.createHash(vm.novoUsuario.senha);
+                vm.novoUsuario.confirmaSenha = md5.createHash(vm.novoUsuario.confirmaSenha);
                 estabelecimentoService.criarEstabelecimento(vm.novoUsuario).then(function(response) {
                     if (response.status === 0) {
                         var notify = {
@@ -36,7 +37,7 @@
                     } else {
                         var notify = {
                             type: 'error',
-                            title: 'Não foi possível realizar o cadastro!',
+                            title: response.message,
                             content: '',
                             timeout: 5000 //time in ms
                         };

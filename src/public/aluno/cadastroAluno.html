@@ -9,9 +9,11 @@
                 <input ng-model="cadastroAlunoCtrl.novoUsuario.nome" required>
             </md-input-container>
             <md-input-container class="md-block pad10" flex-gt-sm>
-                <label>Data de nascimento</label>
-                <md-datepicker aria-label="true" ng-model="cadastroAlunoCtrl.novoUsuario.dataNascimento" md-open-on-focus required></md-datepicker>
+                <label>E-mail</label>
+                <input ng-model="cadastroAlunoCtrl.novoUsuario.email" required>
             </md-input-container>
+            <!--    <md-datepicker aria-label="true" ng-model="cadastroAlunoCtrl.novoUsuario.dataNascimento" md-open-on-focus required></md-datepicker>
+            </md-input-container> -->
         </div>
         <div layout-gt-sm="row">
             <md-input-container class="md-block pad10" flex-gt-sm>
@@ -19,18 +21,18 @@
                 <input name="cpf" ng-model="cadastroAlunoCtrl.novoUsuario.cpf" required ui-br-cpf-mask>
             </md-input-container>
             <md-input-container class="md-block pad10" flex-gt-sm>
-                <label>Matrícula</label>
-                <input name="matricula" ng-model="cadastroAlunoCtrl.novoUsuario.matricula" required>
+                <label>Data de nascimento</label>
+                <input type="date" name="dataNascimento" aria-label="Data de nascimento" ng-model="cadastroAlunoCtrl.novoUsuario.dataNascimento" required >
             </md-input-container>
             <md-input-container class="md-block pad10" flex-gt-sm>
-                <label>Celular</label>
+                <label>Celular (Opcional)</label>
                 <input name="cel" ng-model="cadastroAlunoCtrl.novoUsuario.celular" ui-br-phone-number>
             </md-input-container>
         </div>
         <div layout-gt-sm="row">
             <md-input-container class="md-block pad10" flex-gt-sm>
-                <label>E-mail</label>
-                <input ng-model="cadastroAlunoCtrl.novoUsuario.email" required>
+                <label>Matrícula</label>
+                <input name="matricula" ng-model="cadastroAlunoCtrl.novoUsuario.matricula" required>
             </md-input-container>
             <md-input-container class="md-block pad10" flex-gt-sm>
                 <label>Instituição de ensino</label>

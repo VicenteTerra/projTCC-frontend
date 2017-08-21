@@ -48,7 +48,6 @@
                 };
                 $scope.$emit('notify', notify);
             } else {
-                console.log(vm.instituicaoSelected)
                 vm.novoUsuario.instituicao = vm.instituicaoSelected;
                 vm.novoUsuario.senha = md5.createHash(vm.novoUsuario.senha);
                 alunoService.criarAluno(vm.novoUsuario).then(function(response) {
@@ -78,7 +77,6 @@
             estabelecimentoService.getEstabelecimentosByInst(vm.instituicaoSelected).then(function(response){
                  if (response.status === 0) {
                         vm.listaEstabelecimentos = response.listaEstabelecimentos;
-                        console.log(vm.listaEstabelecimentos);
                     } else {
                         var notify = {
                             type: 'error',

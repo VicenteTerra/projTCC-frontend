@@ -23,6 +23,7 @@
                 email: user.email,
                 telefone: user.celular,
                 instituicao: user.instituicao,
+                matricula: user.matricula,
                 dataNascimento: user.dataNascimento,
                 senha: user.senha
             };

@@ -7,7 +7,6 @@
 
     function estabelecimentoService($http , baseUrl) {
         var service = this;
-        console.log(baseUrl)
 
         service.criarEstabelecimento = function(estabelecimento) {
             var data = {

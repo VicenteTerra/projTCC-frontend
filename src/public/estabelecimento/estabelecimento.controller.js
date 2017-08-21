@@ -28,7 +28,7 @@
                         type: 'error',
                         title: response.message,
                         content: '',
-                        timeout: 7000
+                        timeout: 4000
                     };
                     $scope.$emit('notify', notify);
                 }
