@@ -1,4 +1,9 @@
-
+md-content{
+  height: 100%
+}
+.pointer{
+  cursor: pointer !important;
+}
 .navbarStyle{
   height: 90px;
   background-color: lightgray !important;
@@ -39,6 +44,9 @@ md-sidenav.md-locked-open-remove, md-sidenav.md-locked-open-remove.md-closed,
 }
 .pad10{
   padding: 10px;
+}
+.pad6{
+  padding: 6px;
 }
 
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{

@@ -1,0 +1,23 @@
+<section flex="80" flex-offset="30">
+    <md-card class="md-padding" ng-repeat="auto in estabelecimentoCtrl.listaAutorizacoes" class="noright">
+        <md-card-header-text>
+            <label>Instituição: </label>
+            {{ auto.estabelecimentoNome }}</div>
+            <md-button ng-if="auto.statusAutorizacao == 2" class="md-raised md-primary md-mini" aria-label="Status" ng-click="estabelecimentoCtrl.toogleShowMsg($index)" title="Motivo da proibição" style="float: right;">
+                <md-icon md-svg-src="img/icons/ic_help_outline_white_24px.svg"></md-icon>
+            </md-button>
+            <div ng-if="auto.statusAutorizacao == 0">
+                <md-icon md-svg-src="img/icons/ic_hourglass_empty_black_24px.svg"></md-icon> Aguardando autorização
+            </div>
+            <div ng-if="auto.statusAutorizacao == 1">
+                <md-icon md-svg-src="img/icons/ic_done_black_24px.svg"></md-icon> Permissão concedida
+            </div>
+            <div ng-if="auto.statusAutorizacao == 2">
+                <md-icon md-svg-src="img/icons/ic_help_outline_black_24px.svg"></md-icon> Permissão negada
+            </div>
+        </md-card-header-text>
+        <md-toolbar  ng-show="estabelecimentoCtrl.showMsg[$index]" style="padding: 10px">
+            <h5>{{auto.mensagemAutorizacao}}</h5>
+        </md-toolbar>
+    </md-card>
+</section>

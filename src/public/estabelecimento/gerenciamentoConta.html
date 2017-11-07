@@ -1,0 +1,64 @@
+<section flex="80" flex-offset="30">
+    <div class="">
+        <h3>Informações do Estabelecimento</h3>
+    </div>
+    <form name="userForm" class="pad6">
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block pad6" flex-gt-sm>
+                <label>Nome do Estabelecimento</label>
+                <input ng-model="estabelecimentoCtrl.estabelecimento.nome" required>
+            </md-input-container>
+            <md-input-container class="md-block pad6" flex-gt-sm>
+                <label>Endereço</label>
+                <input ng-model="estabelecimentoCtrl.estabelecimento.endereco" required>
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block pad6" flex-gt-sm>
+                <label>Nome do reponsável pelo estabelecimento</label>
+                <input ng-model="estabelecimentoCtrl.estabelecimento.nomeResponsavel" required>
+            </md-input-container>
+            <md-input-container class="md-block pad6" flex-gt-sm>
+                <label>CPF do reponsável</label>
+                <input ng-model="estabelecimentoCtrl.estabelecimento.cpfResponsavel" ui-br-cpf-mask required>
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block pad6" flex-gt-sm>
+                <label>E-mail</label>
+                <input ng-model="estabelecimentoCtrl.estabelecimento.email" required>
+            </md-input-container>
+            <md-input-container class="md-block pad6" flex-gt-sm>
+                <label>Celular / Telefone</label>
+                <input name="cel" ng-model="estabelecimentoCtrl.estabelecimento.telefone" ui-br-phone-number required>
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block pad6" flex-gt-sm>
+                <label>CNPJ</label>
+                <input name="cpf" ng-model="estabelecimentoCtrl.estabelecimento.cnpj" required ui-br-cnpj-mask>
+            </md-input-container>
+        </div>
+        <div class="upload-files col-xs-6" flex>
+            <div flex>
+                <table>
+                    <tr ng-repeat="file in estabelecimentoCtrl.estabelecimento.files">
+                        <td><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{file.filename}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div flex>
+                <label class="md-button md-primary md-raised">
+                    <span>Upload de Documentos</span>
+                    <md-icon md-svg-src="img/icons/ic_file_upload_white_24px.svg"></md-icon>
+                    <input style="display: none;" type="file" ng-model="estabelecimentoCtrl.estabelecimento.files" base-sixty-four-input maxsize="1000000" multiple accept="application/pdf" />
+                </label>
+            </div>
+        </div>
+        <div class="col-xs6">
+            <md-button class="md-primary md-raised" ng-disabled="userForm.$invalid" ng-click="estabelecimentoCtrl.updateEstabelecimento()">Salvar
+                <md-icon md-svg-src="img/icons/ic_save_white_24px.svg"></md-icon>
+            </md-button>
+        </div>
+    </form>
+</section>

@@ -1,61 +1,40 @@
-<section layout="row" flex>
-    <div flex="20">
-        <md-sidenav flex class="md-sidenav-left hidden-xs" md-component-id="left" md-is-locked-open="estabelecimentoCtrl.toggle" md-whiteframe="4">
-            <md-toolbar class="md-theme-indigo">
-                <div class="md-toolbar-tools">
-                    <h3 class="md-toolbar-tools">Bem vindo, {{estabelecimentoCtrl.usuarioLogado}} </h3>
-                    <md-button class="md-icon-button" aria-label="More" ng-click="estabelecimentoCtrl.toggleSideNav()">
-                        <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
-                    </md-button>
-                </div>
-            </md-toolbar>
-            <md-content width="4">
-                <md-menu-item>
-                    <md-button class="md-primary" aria-label="true">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"> Verificar Matrícula</i>
-                    </md-button>
-                </md-menu-item>
-                <md-menu-item>
-                    <md-button class="md-primary" aria-label="true" ng-click="estabelecimentoCtrl.logout()">
-                        <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
-                    </md-button>
-                </md-menu-item>
-            </md-content>
-        </md-sidenav>
-        <md-button class="md-fab md-raised" aria-label="true" ng-show="!estabelecimentoCtrl.toggle" ng-click="estabelecimentoCtrl.toggleSideNav()">
-            <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
-        </md-button>
-    </div>
-    <div class="col-xs-12" style="padding: 30px">
-        <form name="formConsulta" novalidate>
-            <md-input-container class="col-xs-offset-2 col-xs-4">
-                <label>Consultar matrícula</label>
-                <input type="text" ng-model="estabelecimentoCtrl.consultaMat" ng-keypress="($event.keyCode === 13 && !formConsulta.$invalid) && estabelecimentoCtrl.consultar()" required>
-            </md-input-container>
-            <md-button class="md-raised md-primary" ng-click="estabelecimentoCtrl.consultar()" ng-disabled="estabelecimentoCtrl.consultaCpf == '' || formConsulta.$invalid"> Verificar</md-button>
-            <md-button class="md-raised md-default" ng-click="estabelecimentoCtrl.limparConsulta()" ng-disabled="!estabelecimentoCtrl.showResultConsulta">Limpar</md-button>
-        </form>
-        <md-card class="col-xs-offset-1 col-xs-8" ng-show="estabelecimentoCtrl.showResultConsulta && estabelecimentoCtrl.usuarioConsulta != null ">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">{{estabelecimentoCtrl.usuarioConsulta.nome}}</span>
-                    <span class="md-subhead">{{estabelecimentoCtrl.usuarioConsulta.instituicao}}</span>
-                    <span class="md-subhead">{{estabelecimentoCtrl.usuarioConsulta.cpf}}</span>
-                </md-card-title-text>
-                <md-card-title-media>
-                    <div class="md-media-lg card-media">
-                        <img ng-src="data:image/png;base64,{{estabelecimentoCtrl.usuarioConsulta.foto}}" width="150px" height="150px" alt="">
-                    </div>
-                </md-card-title-media>
-            </md-card-title>
-            <md-card-actions layout="row" layout-align="center">
-                <md-button ng-show="estabelecimentoCtrl.usuarioConsulta.situacao == '0'" class="md-raised md-primary">
-                    <h4>Matriculado na {{estabelecimentoCtrl.usuarioConsulta.instituicao}}</h4>
+<section flex="30">
+    <md-sidenav flex="30" class="md-sidenav-left hidden-xs" md-component-id="left" md-is-locked-open="estabelecimentoCtrl.toggle" md-whiteframe="4">
+        <md-toolbar class="md-theme-indigo">
+            <div class="md-toolbar-tools">
+                <h3 class="md-toolbar-tools">Bem vindo, {{estabelecimentoCtrl.usuarioLogado}} </h3>
+                <md-button class="md-icon-button" aria-label="More" ng-click="estabelecimentoCtrl.toggleSideNav()">
+                    <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
                 </md-button>
-                <md-button ng-show="estabelecimentoCtrl.usuarioConsulta.situacao == '1'" class="md-raised md-warn">
-                    <h4>Matricula Trancada na {{estabelecimentoCtrl.usuarioConsulta.instituicao}} </h4>
+            </div>
+        </md-toolbar>
+        <md-content>
+            <md-menu-item>
+                <md-button class="md-primary" aria-label="true" ui-sref="estabelecimento.verificacaoMatricula">
+                    <i class="fa fa-search" aria-hidden="true"> Verificar Matrícula</i>
                 </md-button>
-            </md-card-actions>
-        </md-card>
-    </div>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button class="md-primary" aria-label="true" ui-sref="estabelecimento.statusCadastro" ng-click="estabelecimentoCtrl.getStatusCadastroInstituicao()">
+                    <i class="fa fa-refresh" aria-hidden="true"> Status do cadastro</i>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button class="md-primary" aria-label="true" ng-click="estabelecimentoCtrl.getEstabelecimento()" ui-sref="estabelecimento.gerenciamentoConta">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"> Dados da conta</i>
+                </md-button>
+            </md-menu-item>
+        </md-content>
+        <md-toolbar>
+            <md-menu-item>
+                <md-button class="md-default" aria-label="true" ng-click="estabelecimentoCtrl.logout()">
+                    <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
+                </md-button>
+            </md-menu-item>
+        </md-toolbar>
+    </md-sidenav>
+    <md-button class="md-fab md-raised" aria-label="true" ng-show="!estabelecimentoCtrl.toggle" ng-click="estabelecimentoCtrl.toggleSideNav()">
+        <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+    </md-button>
 </section>
+<ui-view></ui-view>

@@ -47,13 +47,22 @@
                 });
         }
         service.autoriza = function(idEstab, idInst) {
-            return $http.get(baseUrl+'/instituicao/autorizaEstabelecimento/' + idEstab + '/' + idInst).then(
+            var dataRequest = {
+                idEstabelecimento : idEstab,
+                idInstituicao : idInst
+            }
+            return $http.post(baseUrl+'/instituicao/autorizaEstabelecimento', dataRequest).then(
                 function(response) {
                     return response.data;
                 });
         }
-        service.desautoriza = function(idEstab, idInst) {
-            return $http.get(baseUrl+'/instituicao/desautorizaEstabelecimento/' + idEstab + '/' + idInst).then(
+        service.desautoriza = function(idEstab, idInst, msg) {
+              var dataRequest = {
+                idEstabelecimento : idEstab,
+                idInstituicao : idInst,
+                msg : msg
+            }
+            return $http.post(baseUrl+'/instituicao/desautorizaEstabelecimento' , dataRequest).then(
                 function(response) {
                     return response.data;
                 });

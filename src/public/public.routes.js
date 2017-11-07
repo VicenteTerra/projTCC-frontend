@@ -60,6 +60,24 @@
                     }]
                 }
             })
+            .state('estabelecimento.verificacaoMatricula', {
+                url: '/verificaoMatricula',
+                templateUrl: 'src/public/estabelecimento/verificacaoMatricula.html',
+                controller: 'estabelecimentoController',
+                controllerAs: 'estabelecimentotabelecimentoCtrl'
+            })
+            .state('estabelecimento.statusCadastro', {
+                url: '/statusCadastro',
+                templateUrl: 'src/public/estabelecimento/statusCadastro.html',
+                controller: 'estabelecimentoController',
+                controllerAs: 'estabelecimentotabelecimentoCtrl'
+            })
+            .state('estabelecimento.gerenciamentoConta', {
+                url: '/minhaConta',
+                templateUrl: 'src/public/estabelecimento/gerenciamentoConta.html',
+                controller: 'estabelecimentoController',
+                controllerAs: 'estabelecimentotabelecimentoCtrl'
+            })
             .state('cadastroEstabelecimento', {
                 url: '/cadastroEstabelecimento',
                 templateUrl: 'src/public/estabelecimento/cadastroEstabelecimento.html',

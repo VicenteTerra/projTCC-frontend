@@ -15,12 +15,14 @@
                         <i class="fa fa-pencil-square-o" aria-hidden="true"> Editar perfil</i>
                     </md-button>
                 </md-menu-item>
+            </md-content>
+            <md-toolbar>
                 <md-menu-item ng-click="alunoCtrl.logout()">
-                    <md-button class="md-primary" aria-label="true">
+                    <md-button class="md-default" aria-label="true">
                         <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
                     </md-button>
                 </md-menu-item>
-            </md-content>
+            </md-toolbar>
         </md-sidenav>
         <md-button class="md-fab md-raised" aria-label="true" ng-show="!alunoCtrl.toggle" ng-click="alunoCtrl.toggleSideNav()">
             <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
@@ -28,7 +30,7 @@
     </div>
     <md-content flex="80">
         <md-card flex ng-if="alunoCtrl.aluno != null">
-            <md-card-header style="text-align: center; font-weight: bold; color: teal" >Informações do Usuário</md-card-header>
+            <md-card-header style="text-align: center; font-weight: bold; color: teal">Informações do Usuário</md-card-header>
             <md-card-content>
                 <div class="col-xs-12" layout-align="start" ng-if="!alunoCtrl.isEdit" style="margin-bottom: 5%;">
                     <div class="col-xs-4">

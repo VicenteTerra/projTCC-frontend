@@ -1,0 +1,34 @@
+<section flex="80" flex-offset="30">
+    <div style="padding: 30px">
+        <form name="formConsulta" novalidate>
+            <md-input-container class="col-xs-4">
+                <label>Consultar matrícula</label>
+                <input type="text" ng-model="estabelecimentoCtrl.consultaMat" ng-keypress="($event.keyCode === 13 && !formConsulta.$invalid) && estabelecimentoCtrl.consultar()" required>
+            </md-input-container>
+            <md-button class="md-raised md-primary" ng-click="estabelecimentoCtrl.consultar()" ng-disabled="estabelecimentoCtrl.consultaCpf == '' || formConsulta.$invalid"> Verificar</md-button>
+            <md-button class="md-raised md-default" ng-click="estabelecimentoCtrl.limparConsulta()" ng-disabled="!estabelecimentoCtrl.showResultConsulta">Limpar</md-button>
+        </form>
+        <md-card class="col-xs-8" ng-show="estabelecimentoCtrl.showResultConsulta && estabelecimentoCtrl.usuarioConsulta != null ">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{estabelecimentoCtrl.usuarioConsulta.nome}}</span>
+                    <span class="md-subhead">{{estabelecimentoCtrl.usuarioConsulta.instituicao}}</span>
+                    <span class="md-subhead">{{estabelecimentoCtrl.usuarioConsulta.cpf}}</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-lg card-media">
+                        <img ng-src="data:image/png;base64,{{estabelecimentoCtrl.usuarioConsulta.foto}}" width="150px" height="150px" alt="">
+                    </div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="center">
+                <md-button ng-show="estabelecimentoCtrl.usuarioConsulta.situacao == '0'" class="md-raised md-primary">
+                    <h4>Matriculado na {{estabelecimentoCtrl.usuarioConsulta.instituicao}}</h4>
+                </md-button>
+                <md-button ng-show="estabelecimentoCtrl.usuarioConsulta.situacao == '1'" class="md-raised md-warn">
+                    <h4>Matricula Trancada na {{estabelecimentoCtrl.usuarioConsulta.instituicao}} </h4>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</section>

@@ -1,6 +1,6 @@
 <section layout="row" flex>
     <div flex="30">
-        <md-sidenav flex="30" class="md-sidenav-left hidden-xs" md-component-id="left" md-is-locked-open="instituicaoCtrl.toggle" md-whiteframe="4">
+        <md-sidenav flex="30" class="md-sidenav-left toogle-xs" md-component-id="left" md-is-locked-open="instituicaoCtrl.toggle" md-whiteframe="4">
             <md-toolbar class="md-theme-indigo">
                 <div class="md-toolbar-tools">
                     <h3 class="md-toolbar-tools">Bem vindo, {{instituicaoCtrl.usuarioLogado}} </h3>
@@ -15,42 +15,62 @@
                         <i class="fa fa-pencil-square-o" aria-hidden="true"> Autorização de Estabelecimentos</i>
                     </md-button>
                 </md-menu-item>
+            </md-content>
+            <md-toolbar>
                 <md-menu-item ng-click="instituicaoCtrl.logout()">
-                    <md-button class="md-primary" aria-label="true">
+                    <md-button class="md-default" aria-label="true">
                         <i class="fa fa-sign-out" aria-hidden="true"> Sair</i>
                     </md-button>
                 </md-menu-item>
-            </md-content>
+            </md-toolbar>
         </md-sidenav>
-        <md-button class="md-fab md-raised" aria-label="true" ng-show="!instituicaoCtrl.toggle" ng-click="instituicaoCtrl.toggleSideNav()">
+        <md-button class="md-fab md-raised" aria-label="true" ng-click="instituicaoCtrl.toggleSideNav()">
             <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
         </md-button>
     </div>
     <md-content flex="80">
         <md-card flex ng-repeat="item in instituicaoCtrl.listaEstabelecimentos">
-            <md-card-content>
-                <div layout-align="start">
+            <md-card-content flex>
+                <div class="form-group col-xs-3">
                     <label>Nome do estabelecimento:</label>
                     <h5> {{ item.nome }}</h5>
                 </div>
-                <div layout-align="end center">
+                <div class="form-group col-xs-3">
                     <label>Cnpj: </label>
-                    <h6>{{ item.cnpj }}</h6>
+                    <h5>{{ item.cnpj }}</h5>
                 </div>
-                <div class="md-actions" layout="column" layout-align="start">
-                    <md-switch ng-model="instituicaoCtrl.listaEstabelecimentos[$index].autorizado" ng-click="instituicaoCtrl.changePermission(item.id ,$index)" aria-label="Switch 1">
-                        <label ng-if="instituicaoCtrl.listaEstabelecimentos[$index].autorizado"> Autorizado</label>
-                        <label ng-if="!instituicaoCtrl.listaEstabelecimentos[$index].autorizado">Não Autorizado</label>
-                    </md-switch>
-                </div>
-                <md-card-actions layout-align="start">
-                    <md-button ng-click="instituicaoCtrl.listDocumentos(item.cnpj , $index)" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto">Obter Documentos</md-button>
-                </md-card-actions>
-                <md-card-actions layout-align="end center">
-                    <md-button class="md-raised" ng-click="instituicaoCtrl.download(item.cnpj , doc)" ng-repeat="doc in instituicaoCtrl.documentos[$index]">
-                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{doc}}
+                <div class="col-xs-6">
+                    <md-button ng-if="!instituicaoCtrl.showdocs" ng-click="instituicaoCtrl.listDocumentos(item.cnpj , $index)" class="md-fab md-primary md-mini" aria-label="description" md-ripple-size="partial" title="Visualizar documentos">
+                        <md-icon md-svg-src="img/icons/ic_library_books_black_24px.svg"></md-icon>
                     </md-button>
-                </md-card-actions>
+                    <md-button ng-if="instituicaoCtrl.showdocs" ng-click="instituicaoCtrl.hideDocs()" class="md-fab md-mini md-default" aria-label="description" md-ripple-size="partial">
+                        <md-icon md-svg-src="img/icons/ic_clear_black_24px.svg"></md-icon>
+                    </md-button>
+                    <md-chips ng-repeat="doc in instituicaoCtrl.documentos[$index]" ng-show="instituicaoCtrl.showdocs">
+                        <md-chip class="pointer" ng-click="instituicaoCtrl.download(item.cnpj , doc)" style="font-size: 10px">{{doc}}
+                            <md-icon md-svg-src="img/icons/ic_file_download_black_24px.svg"></md-icon>
+                        </md-chip>
+                    </md-chips>
+                </div>
+                <div class="col-xs-12">
+                    <label for="">Status</label>
+                    <div class="col-xs-12" ng-if="item.autorizacao.status == 0">
+                        <div class="col-xs-6" style="display: inline-block;">
+                            <md-button ng-click="instituicaoCtrl.autorizaEstab(item.id)" class="md-raised md-primary " aria-label="description">Autorizar</md-button>
+                            <md-button ng-click="instituicaoCtrl.desautoriza(item.id , $event)" class="md-raised md-default" aria-label="description">Recursar</md-button>
+                        </div>
+                    </div>
+                    <div class="col-xs-12" ng-if="item.autorizacao.status == 1">
+                       <md-icon md-svg-src="img/icons/ic_done_black_24px.svg"></md-icon> Permissão concedida
+                        <md-button ng-click="instituicaoCtrl.desautoriza(item.id , $event)" class="md-raised md-mini md-warn" aria-label="Remover Permissão" title="Remover Permissão">
+                            <md-icon md-svg-src="img/icons/ic_clear_black_24px.svg"></md-icon>
+                        </md-button>
+                    </div>
+                    <div class="col-xs-12" ng-if="item.autorizacao.status == 2">
+                        <md-icon md-svg-src="img/icons/ic_clear_black_24px.svg"></md-icon> Permissão negada
+                        <md-button ng-click="instituicaoCtrl.autorizaEstab(item.id)" class="md-raised md-primary " aria-label="description" md-ripple-size="full|partial|auto">Autorizar</md-button>
+                    </div>
+                </div>
             </md-card-content>
         </md-card>
     </md-content>
