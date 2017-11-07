@@ -35,15 +35,15 @@
                 <div class="col-xs-12" layout-align="start" ng-if="!alunoCtrl.isEdit" style="margin-bottom: 5%;">
                     <div class="col-xs-4">
                         <label>Nome</label>
-                        <h5><i class="material-icons">face</i> {{ alunoCtrl.aluno.nome }}</h5>
+                        <h5>{{ alunoCtrl.aluno.nome }}</h5>
                     </div>
                     <div class="col-xs-4">
                         <label>Matrícula </label>
-                        <h5><i class="material-icons">confirmation_number</i> {{ alunoCtrl.aluno.matricula }}</h5>
+                        <h5>{{ alunoCtrl.aluno.matricula }}</h5>
                     </div>
                     <div class="col-xs-4">
                         <label>Instituição </label>
-                        <h5><i class="material-icons">business</i> {{ alunoCtrl.aluno.instituicaoNome}}</h5>
+                        <h5>{{ alunoCtrl.aluno.instituicaoNome}}</h5>
                     </div>
                 </div>
                 <div layout-align="start" ng-if="alunoCtrl.isEdit">
@@ -66,10 +66,15 @@
                     </md-input-container>
                 </div>
                 <md-card-actions layout-align="start">
-                    <md-button ng-click="alunoCtrl.toogleEdit()" ng-if="!alunoCtrl.isEdit" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto"> Editar informações</md-button>
-                    <md-button ng-click="alunoCtrl.changeAtivo()" ng-if="!alunoCtrl.isEdit && alunoCtrl.aluno.ativo == 1" class="md-raised md-warn" aria-label="description" md-ripple-size="full|partial|auto" layout-align="end center"> Desativar conta</md-button>
-                    <md-button ng-click="alunoCtrl.changeAtivo()" ng-if="!alunoCtrl.isEdit  && alunoCtrl.aluno.ativo == 0" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto" layout-align="end center"> Ativar conta</md-button>
-                    <md-button ng-click="alunoCtrl.updateAluno()" ng-if="alunoCtrl.isEdit" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto">Salvar</md-button>
+                    <md-button ng-click="alunoCtrl.toogleEdit()" ng-if="!alunoCtrl.isEdit" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto">
+                        <md-icon md-svg-src="img/icons/ic_mode_edit_white_24px.svg"></md-icon> Editar informações </md-button>
+                    <md-button ng-click="alunoCtrl.changeAtivo()" ng-if="!alunoCtrl.isEdit && alunoCtrl.aluno.ativo == 1" class="md-raised md-warn" aria-label="description" md-ripple-size="full|partial|auto" layout-align="end center">
+                        <md-icon md-svg-src="img/icons/ic_clear_white_24px.svg"></md-icon> Desativar conta </md-button>
+                    <md-button ng-click="alunoCtrl.changeAtivo()" ng-if="!alunoCtrl.isEdit  && alunoCtrl.aluno.ativo == 0" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto" layout-align="end center">
+                        <md-icon md-svg-src="img/icons/ic_done_white_24px.svg"></md-icon> Ativar conta
+                    </md-button>
+                    <md-button ng-click="alunoCtrl.updateAluno()" ng-if="alunoCtrl.isEdit" class="md-raised md-primary" aria-label="description" md-ripple-size="full|partial|auto">
+                        <md-icon md-svg-src="img/icons/ic_save_white_24px.svg"></md-icon> Salvar </md-button>
                     <md-button ng-click="alunoCtrl.toogleEdit()" ng-if="alunoCtrl.isEdit" class="md-raised md-default" aria-label="description" md-ripple-size="full|partial|auto">Cancelar</md-button>
                 </md-card-actions>
             </md-card-content>
