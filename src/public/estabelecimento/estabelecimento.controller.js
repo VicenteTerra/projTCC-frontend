@@ -91,7 +91,7 @@
         }
 
         vm.toggleSideNav = function() {
-            vm.toggle = !vm.toggle;
+            // vm.toggle = !vm.toggle;
         }
 
         vm.logout = function() {
