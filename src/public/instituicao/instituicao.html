@@ -57,11 +57,11 @@
                     <div class="col-xs-12" ng-if="item.autorizacao.status == 0">
                         <div class="col-xs-6" style="display: inline-block;">
                             <md-button ng-click="instituicaoCtrl.autorizaEstab(item.id)" class="md-raised md-primary " aria-label="description">Autorizar</md-button>
-                            <md-button ng-click="instituicaoCtrl.desautoriza(item.id , $event)" class="md-raised md-default" aria-label="description">Recursar</md-button>
+                            <md-button ng-click="instituicaoCtrl.desautoriza(item.id , $event)" class="md-raised md-default" aria-label="description">Recusar</md-button>
                         </div>
                     </div>
                     <div class="col-xs-12" ng-if="item.autorizacao.status == 1">
-                       <md-icon md-svg-src="img/icons/ic_done_black_24px.svg"></md-icon> Permissão concedida
+                        <md-icon md-svg-src="img/icons/ic_done_black_24px.svg"></md-icon> Permissão concedida
                         <md-button ng-click="instituicaoCtrl.desautoriza(item.id , $event)" class="md-raised md-mini md-warn" aria-label="Remover Permissão" title="Remover Permissão">
                             <md-icon md-svg-src="img/icons/ic_clear_black_24px.svg"></md-icon>
                         </md-button>

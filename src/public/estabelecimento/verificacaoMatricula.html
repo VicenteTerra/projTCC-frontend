@@ -2,7 +2,7 @@
     <div style="padding: 30px">
         <form name="formConsulta" novalidate>
             <md-input-container class="col-xs-4">
-                <label>Consultar matrícula</label>
+                <label>Digite a matrícula</label>
                 <input type="text" ng-model="estabelecimentoCtrl.consultaMat" ng-keypress="($event.keyCode === 13 && !formConsulta.$invalid) && estabelecimentoCtrl.consultar()" required>
             </md-input-container>
             <md-button class="md-raised md-primary" ng-click="estabelecimentoCtrl.consultar()" ng-disabled="estabelecimentoCtrl.consultaCpf == '' || formConsulta.$invalid"> Verificar</md-button>
